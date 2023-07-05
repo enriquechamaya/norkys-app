@@ -7,6 +7,7 @@
         <link rel="icon" href="../../assets/img/norkys-logo.png">
         <link href="../../assets/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="../../assets/css/main.css" rel="stylesheet" type="text/css"/>
+        <link href="../../assets/css/toastr/js_latest_toastr.min.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body class="bg">

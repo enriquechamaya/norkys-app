@@ -11,7 +11,7 @@ import java.util.Date;
  * @author Usuario
  */
 public class Producto {
-    
+
     private int id;
     private String nombre;
     private int cantidadPorUnidad;
@@ -20,6 +20,7 @@ public class Producto {
     private int stock;
     private String estado;
     private Date fechaRegistro;
+    private Date fechaActualizacion;
     private int categoriaId;
 
     public int getId() {
@@ -86,6 +87,14 @@ public class Producto {
         this.fechaRegistro = fechaRegistro;
     }
 
+    public Date getFechaActualizacion() {
+        return fechaActualizacion;
+    }
+
+    public void setFechaActualizacion(Date fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
+    }
+
     public int getCategoriaId() {
         return categoriaId;
     }
@@ -93,5 +102,10 @@ public class Producto {
     public void setCategoriaId(int categoriaId) {
         this.categoriaId = categoriaId;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Producto{" + "id=" + id + ", nombre=" + nombre + ", cantidadPorUnidad=" + cantidadPorUnidad + ", precioUnitario=" + precioUnitario + ", unidadMedida=" + unidadMedida + ", stock=" + stock + ", estado=" + estado + ", fechaRegistro=" + fechaRegistro + ", fechaActualizacion=" + fechaActualizacion + ", categoriaId=" + categoriaId + '}';
+    }
+
 }

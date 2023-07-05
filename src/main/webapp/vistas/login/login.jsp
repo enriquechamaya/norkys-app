@@ -11,7 +11,7 @@
         <form method="POST">
             <input type="text" placeholder="Usuario" class="form-control form-control-lg" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
             <input type="text" placeholder="Contraseña" class="form-control form-control-lg" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
-            <button type="button" class="btn btn-success btn-lg">
+            <button type="button" class="btn btn-success btn-lg" onclick="location.href = '../menu/menuPrincipal.jsp'">
                 Ingresar
             </button>
         </form>

@@ -17,18 +17,20 @@ public class ConexionBD {
     private static final String URL = "jdbc:mysql://localhost:3306/bd_pedidos";
     private static final String USER = "root"; //cambiar si tienen otro usuario
     private static final String PASSWORD = ""; //cambiar si tienen otra contraseña
-    private static Connection connection;
 
-    public void connect() {
+    public Connection connect() {
+        Connection connection = null;
         try {
+            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
             System.out.println("Conexión exitosa a la base de datos.");
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             System.err.println("Error al conectar a la base de datos: " + e.getMessage());
         }
+        return connection;
     }
 
-    public void disconnect() {
+    public void disconnect(Connection connection) {
         try {
             if (connection != null && !connection.isClosed()) {
                 connection.close();
