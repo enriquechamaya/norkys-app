@@ -1,5 +1,5 @@
-<%@include file="header.jsp" %>
-<link href="../assets/css/login.css" rel="stylesheet" type="text/css"/>
+<%@include file="../base/header.jsp" %>
+<link href="../../assets/css/login.css" rel="stylesheet" type="text/css"/>
 
 <div class="text-center">
     <h1 class="display-4 text-white">Iniciar sesión</h1>
@@ -21,10 +21,10 @@
         <!-- Remind Passowrd -->
         <div id="formFooter">
             <p class="text-white">¿No tienes una cuenta?</p>
-            <a class="underlineHover" href="#" onclick="location.href = 'registrarUsuario.jsp'">Regístrate</a>
+            <a class="underlineHover" href="#" onclick="location.href = '../usuarios/registrarUsuario.jsp'">Regístrate</a>
         </div>
 
     </div>
 </div>
 
-<%@include file="footer.jsp" %>
+<%@include file="../base/footer.jsp" %>

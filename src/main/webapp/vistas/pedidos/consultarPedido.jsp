@@ -1,7 +1,7 @@
-<%@include file="header.jsp" %>
+<%@include file="../header.jsp" %>
 
 <div class="text-center">
-    <h1 class="display-4 text-white">Consultar productos</h1>
+    <h1 class="display-4 text-white">Consultar pedidos</h1>
 </div>
 
 <div class="row">
@@ -11,7 +11,7 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text" id="btnGroupAddon"><i class="fa fa-search"></i></div>
                 </div>
-                <input type="text" class="form-control form-control-lg" placeholder="Digital el producto a buscar..." aria-label="Input group example" aria-describedby="btnGroupAddon">
+                <input type="text" class="form-control form-control-lg" placeholder="Digital el número de pedido..." aria-label="Input group example" aria-describedby="btnGroupAddon">
             </div>
 
         </div>
@@ -35,7 +35,7 @@
             </div>
             <div class="col-8 text-right">
                 <button type="button" class="btn btn-success btn-lg">
-                    Pedir
+                    Entregar
                 </button>
             </div>
         </div>
@@ -82,10 +82,11 @@
 
         <div class="text-center">
             <button type="button" class="btn btn-link text-success" onclick="location.href='menuPrincipal.jsp'">Cancelar</button>
+
         </div>
 
     </div>
     <div class="col-md-2"></div>
 </div>
 
-<%@include file="footer.jsp" %>
+<%@include file="../footer.jsp" %>

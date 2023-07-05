@@ -1,4 +1,4 @@
-<%@include file="header.jsp" %>
+<%@include file="../header.jsp" %>
 <div class="text-center">
     <h1 class="display-4 text-white">Registar usuario</h1>
 </div>
@@ -46,4 +46,4 @@
     <div class="col-md-2"></div>
 </div>
 
-<%@include file="footer.jsp" %>
+<%@include file="../footer.jsp" %>
