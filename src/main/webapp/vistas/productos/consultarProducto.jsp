@@ -1,4 +1,4 @@
-<%@include file="../header.jsp" %>
+<%@include file="../base/header.jsp" %>
 
 <div class="text-center">
     <h1 class="display-4 text-white">Consultar productos</h1>
@@ -81,11 +81,11 @@
         </table>
 
         <div class="text-center">
-            <button type="button" class="btn btn-link text-success" onclick="location.href='menuPrincipal.jsp'">Cancelar</button>
+            <button type="button" class="btn btn-link text-success" onclick="location.href='../menu/menuPrincipal.jsp'">Cancelar</button>
         </div>
 
     </div>
     <div class="col-md-2"></div>
 </div>
 
-<%@include file="../footer.jsp" %>
+<%@include file="../base/footer.jsp" %>

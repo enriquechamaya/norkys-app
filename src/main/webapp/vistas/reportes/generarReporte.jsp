@@ -1,5 +1,5 @@
-<%@include file="../header.jsp" %>
+<%@include file="../base/header.jsp" %>
 
 generar reporte de ventas en PDF
 
-<%@include file="../footer.jsp" %>
+<%@include file="../base/footer.jsp" %>

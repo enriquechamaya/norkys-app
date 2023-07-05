@@ -1,4 +1,4 @@
-<%@include file="../header.jsp" %>
+<%@include file="../base/header.jsp" %>
 <div class="text-center">
     <h1 class="display-4 text-white">Menú principal</h1>
 </div>
@@ -6,7 +6,7 @@
 <div class="text-center">
     <div class="row">
         <div class="col-md-4 offset-md-4">
-            <button type="button" class="btn btn-success btn-lg btn-block" onclick="location.href = 'registrarUsuario.jsp'">
+            <button type="button" class="btn btn-success btn-lg btn-block" onclick="location.href = '../usuarios/registrarUsuario.jsp'">
                 Registrar usuario
             </button>
         </div>
@@ -14,7 +14,7 @@
     <br/>
     <div class="row">
         <div class="col-md-4 offset-md-4">
-            <button type="button" class="btn btn-success btn-lg btn-block" onclick="location.href = 'registrarProducto.jsp'">
+            <button type="button" class="btn btn-success btn-lg btn-block" onclick="location.href = '../productos/registrarProducto.jsp'">
                 Registrar producto
             </button>
         </div>
@@ -22,7 +22,7 @@
     <br/>
     <div class="row">
         <div class="col-md-4 offset-md-4">
-            <button type="button" class="btn btn-success btn-lg btn-block" onclick="location.href = 'consultarProducto.jsp'">
+            <button type="button" class="btn btn-success btn-lg btn-block" onclick="location.href = '../productos/consultarProducto.jsp'">
                 Consulta productos
             </button>
         </div>
@@ -30,7 +30,7 @@
     <br/>
     <div class="row">
         <div class="col-md-4 offset-md-4">
-            <button type="button" class="btn btn-success btn-lg btn-block" onclick="location.href = 'registrarPedido.jsp'">
+            <button type="button" class="btn btn-success btn-lg btn-block" onclick="location.href = '../pedidos/registrarPedido.jsp'">
                 Registrar pedido
             </button>
         </div>
@@ -38,7 +38,7 @@
     <br/>
     <div class="row">
         <div class="col-md-4 offset-md-4">
-            <button type="button" class="btn btn-success btn-lg btn-block" onclick="location.href = 'consultarPedido.jsp'">
+            <button type="button" class="btn btn-success btn-lg btn-block" onclick="location.href = '../pedidos/consultarPedido.jsp'">
                 Consulta pedidos
             </button>
         </div>
@@ -46,11 +46,11 @@
     <br/>
     <div class="row">
         <div class="col-md-4 offset-md-4">
-            <button type="button" class="btn btn-success btn-lg btn-block" onclick="location.href = 'generarReporte.jsp'">
+            <button type="button" class="btn btn-success btn-lg btn-block" onclick="location.href = '../reportes/generarReporte.jsp'">
                 Generar reporte de ventas
             </button>
         </div>
     </div>
 </div>
 
-<%@include file="../footer.jsp" %>
+<%@include file="../base/footer.jsp" %>

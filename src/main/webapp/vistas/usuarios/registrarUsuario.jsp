@@ -1,4 +1,4 @@
-<%@include file="../header.jsp" %>
+<%@include file="../base/header.jsp" %>
 <div class="text-center">
     <h1 class="display-4 text-white">Registar usuario</h1>
 </div>
@@ -39,11 +39,11 @@
                     Grabar
                 </button>
                 <br/>
-                <button type="button" class="btn btn-link text-success" onclick="location.href = 'login.jsp'">Cancelar</button>
+                <button type="button" class="btn btn-link text-success" onclick="location.href = '../login/login.jsp'">Cancelar</button>
             </div>
         </form>
     </div>
     <div class="col-md-2"></div>
 </div>
 
-<%@include file="../footer.jsp" %>
+<%@include file="../base/footer.jsp" %>
