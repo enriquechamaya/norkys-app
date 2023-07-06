@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="col-md-2">
-        <button type="button" class="btn btn-warning btn-lg" id="btn_carrito" style="display: none;">
+        <button type="button" class="btn btn-warning btn-lg" id="btn_carrito" style="display: none;" onclick="location.href = '../carrito/carrito.jsp'">
             Carrito <span class="badge badge-light">0</span>
         </button>
     </div>

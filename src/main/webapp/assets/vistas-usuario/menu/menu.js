@@ -74,7 +74,7 @@ function listarProductos(categoriaId) {
                             <h4 class="card-title">S/. ${data[i].precioUnitario}</h4>
                         </div>
                         <div class="card-footer text-center">
-                            <button class="btn btn-primary" onclick="agregarCarrito('${data[i].id}','${data[i].nombre}','${data[i].precioUnitario}')">
+                            <button class="btn btn-primary" onclick="agregarCarrito(${data[i].id},'${data[i].nombre}',${data[i].precioUnitario})">
                                 Agregar al carrito
                             </button>
                         </div>
