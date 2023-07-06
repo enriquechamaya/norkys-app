@@ -52,7 +52,7 @@
                     Grabar
                 </button>
                 <br/>
-                <button type="button" class="btn btn-link text-success" onclick="location.href = '../menu/menuPrincipal.jsp'">Cancelar</button>
+                <button type="button" class="btn btn-link text-success" onclick="history.back()">Cancelar</button>
             </div>
         </form>
     </div>

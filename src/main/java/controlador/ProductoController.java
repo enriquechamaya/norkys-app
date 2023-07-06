@@ -42,12 +42,15 @@ public class ProductoController extends HttpServlet {
             response.getWriter().write(jsonListaProductos);
 
         } else if (accion.equals("obtener")) {
-            ProductoDAO productoDAO = new ProductoDAO();
-            int productoId = Integer.parseInt(request.getParameter("productoId"));
-            Producto producto = productoDAO.obtenerProducto(productoId);
 
-            String jsonObtenerProducto = new Gson().toJson(producto);
-            response.getWriter().write(jsonObtenerProducto);
+        } else if (accion.equals("listarPorCategoria")) {
+            int categoriaId = Integer.parseInt(request.getParameter("categoriaId"));
+
+            ProductoDAO productoDAO = new ProductoDAO();
+            List<Producto> lista = productoDAO.listarProductosPorCategoria(categoriaId);
+
+            String jsonListaProductos = new Gson().toJson(lista);
+            response.getWriter().write(jsonListaProductos);
         } else {
             response.getWriter().write("acción desconocida");
         }

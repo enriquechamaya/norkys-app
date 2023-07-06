@@ -53,6 +53,36 @@ public class ProductoDAO {
         return lista;
     }
 
+    public List<Producto> listarProductosPorCategoria(int categoriaId) {
+        List<Producto> lista = new ArrayList<>();
+        Connection cnn = conexion.connect();
+        try {
+            ps = cnn.prepareStatement("select * from producto where Cat_Id = ?");
+            ps.setInt(1, categoriaId);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Producto producto = new Producto();
+                producto.setId(rs.getInt("Pro_Id"));
+                producto.setNombre(rs.getString("Pro_Nombre"));
+                producto.setCantidadPorUnidad(Integer.parseInt(rs.getString("Pro_CantidadPorUnidad")));
+                producto.setPrecioUnitario(Double.parseDouble(rs.getString("Pro_PrecioUnitario")));
+                producto.setUnidadMedida(rs.getString("Pro_UnidadMedida"));
+                producto.setStock(Integer.parseInt(rs.getString("Pro_Stock")));
+                producto.setEstado(rs.getString("Pro_Estado"));
+                producto.setFechaRegistro(rs.getDate("Pro_FechaRegistro"));
+                producto.setCategoriaId(Integer.parseInt(rs.getString("Cat_Id")));
+                lista.add(producto);
+            }
+            ps.close();
+            rs.close();
+        } catch (SQLException e) {
+            System.err.println("Ocurrió un error en el método listarProductosPorCategoria " + e);
+        } finally {
+            conexion.disconnect(cnn);
+        }
+        return lista;
+    }
+
     public Producto obtenerProducto(int id) {
         Producto producto = new Producto();
         Connection cnn = conexion.connect();
