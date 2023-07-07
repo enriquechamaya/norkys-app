@@ -61,6 +61,7 @@ function procederCompra(nroPedido) {
 }
 
 function registrarPedido() {
+    console.log("registrarPedido", carrito);
     $.ajax({
         type: 'POST',
         url: "../../PedidoController?accion=registrar",
@@ -68,11 +69,12 @@ function registrarPedido() {
             nombres: $("#txt_nombres").val(),
             apellidos: $("#txt_apellidos").val(),
             dni: $("#txt_dni").val(),
-            correo: $("#txt_correo").val()
+            correo: $("#txt_correo").val(),
+            pedido: JSON.stringify(carrito)
         },
         success: function (data, textStatus, jqXHR) {
             console.log("rpta data ---> ", data);
-            if (data.length !== '') {
+            if (data.length > 0) {
                 procederCompra(data);
             } else {
                 toastr.error('No pudo registrar el registrarPedido', 'Error');
