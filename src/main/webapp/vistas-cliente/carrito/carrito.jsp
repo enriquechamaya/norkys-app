@@ -6,7 +6,7 @@
 
 
 <div class="row">
-    <div class="col-md-8 offset-md-2">
+    <div class="col-md-12">
         <table class="table table-striped">
             <thead class="thead-dark">
                 <tr>
@@ -15,11 +15,24 @@
                     <th scope="col">Cantidad</th>
                     <th scope="col">Precio</th>
                     <th scope="col">Subtotal</th>
-                    <th scope="col">Accion</th>
                 </tr>
             </thead>
             <tbody id="tbl_productos_carrito"></tbody>
         </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <button type="button" class="btn btn-info btn-lg" onclick="history.back()">
+            Seguir comprando
+        </button>
+    </div>
+    <div class="col-md-4">&nbsp;</div>
+    <div class="col-md-4 text-right">
+        <button type="button" class="btn btn-success btn-lg" onclick="location.href = '../productos/registrarProducto.jsp'">
+            Proceder con la compra
+        </button>
     </div>
 </div>
 
