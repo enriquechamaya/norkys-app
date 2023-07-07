@@ -48,9 +48,19 @@
             </div>
             <div class="modal-body">
                 <form>
-                    <div class="form-group">
-                        <label for="txt_dni" class="col-form-label">DNI:</label>
-                        <input type="number" class="form-control" id="txt_dni">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="txt_dni" class="col-form-label">DNI:</label>
+                                <input type="number" class="form-control" id="txt_dni">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-xs-4 form-group">
+                                <label for="txt_nro_personas" class="col-form-label">NRO DE PERSONAS:</label>
+                                <input type="number" class="form-control" id="txt_nro_personas">
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="txt_nombres" class="col-form-label">Nombres:</label>
@@ -68,7 +78,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-success" onclick="procederCompra()">Realizar pedido</button>
+                <!--<button type="button" class="btn btn-success" onclick="procederCompra()">Realizar pedido</button>-->
+                <button type="button" class="btn btn-success" onclick="registrarCliente()">Realizar pedido</button>
             </div>
         </div>
     </div>

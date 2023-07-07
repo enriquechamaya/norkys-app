@@ -50,6 +50,7 @@ function listarCarrito() {
 function procederCompra() {
     let cliente = {
         dni: $("#txt_dni").val(),
+        nroPersonas: $("#txt_nro_personas").val(),
         nombres: $("#txt_nombres").val(),
         apellidos: $("#txt_apellidos").val(),
         correo: $("#txt_correo").val()
@@ -57,4 +58,27 @@ function procederCompra() {
 
     localStorage.setItem("clienteBD", JSON.stringify(cliente));
     location.href = '../voucher/voucher.jsp';
+}
+
+function registrarCliente() {
+    $.ajax({
+        type: 'POST',
+        url: "../../ClienteController?accion=registrar",
+        data: {
+            nombres: $("#txt_nombres").val(),
+            apellidos: $("#txt_apellidos").val(),
+            dni: $("#txt_dni").val(),
+            correo: $("#txt_correo").val()
+        },
+        success: function (data, textStatus, jqXHR) {
+            if (data == "1") {
+                toastr.success('Cliente registrado correctamente', 'Mensaje exitoso');
+            } else {
+                toastr.error('No pudo registrar el cliente', 'Error');
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            toastr.error('No pudo realizar la petición registrarCliente', 'Error interno');
+        }
+    });
 }
