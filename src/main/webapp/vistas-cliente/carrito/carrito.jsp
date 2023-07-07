@@ -30,9 +30,47 @@
     </div>
     <div class="col-md-4">&nbsp;</div>
     <div class="col-md-4 text-right">
-        <button type="button" class="btn btn-success btn-lg" onclick="location.href = '../productos/registrarProducto.jsp'">
+        <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#exampleModal">
             Proceder con la compra
         </button>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Regístrate</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="txt_dni" class="col-form-label">DNI:</label>
+                        <input type="number" class="form-control" id="txt_dni">
+                    </div>
+                    <div class="form-group">
+                        <label for="txt_nombres" class="col-form-label">Nombres:</label>
+                        <input type="text" class="form-control" id="txt_nombres">
+                    </div>
+                    <div class="form-group">
+                        <label for="txt_apellidos" class="col-form-label">Apellidos:</label>
+                        <input type="text" class="form-control" id="txt_apellidos">
+                    </div>
+                    <div class="form-group">
+                        <label for="txt_correo" class="col-form-label">Correo:</label>
+                        <input type="email" class="form-control" id="txt_correo">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-success" onclick="procederCompra()">Realizar pedido</button>
+            </div>
+        </div>
     </div>
 </div>
 
