@@ -79,7 +79,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 <!--<button type="button" class="btn btn-success" onclick="procederCompra()">Realizar pedido</button>-->
-                <button type="button" class="btn btn-success" onclick="registrarCliente()">Realizar pedido</button>
+                <button type="button" class="btn btn-success" onclick="registrarPedido()">Realizar pedido</button>
             </div>
         </div>
     </div>

@@ -16,7 +16,6 @@ function inicializarCarrito() {
             carrito.push(data[0]);
         }
     }
-    console.log(carrito);
 }
 
 function listarCarrito() {
@@ -47,23 +46,24 @@ function listarCarrito() {
     `);
 }
 
-function procederCompra() {
+function procederCompra(nroPedido) {
     let cliente = {
         dni: $("#txt_dni").val(),
         nroPersonas: $("#txt_nro_personas").val(),
         nombres: $("#txt_nombres").val(),
         apellidos: $("#txt_apellidos").val(),
-        correo: $("#txt_correo").val()
+        correo: $("#txt_correo").val(),
+        nroPedido: nroPedido
     };
 
     localStorage.setItem("clienteBD", JSON.stringify(cliente));
     location.href = '../voucher/voucher.jsp';
 }
 
-function registrarCliente() {
+function registrarPedido() {
     $.ajax({
         type: 'POST',
-        url: "../../ClienteController?accion=registrar",
+        url: "../../PedidoController?accion=registrar",
         data: {
             nombres: $("#txt_nombres").val(),
             apellidos: $("#txt_apellidos").val(),
@@ -71,14 +71,15 @@ function registrarCliente() {
             correo: $("#txt_correo").val()
         },
         success: function (data, textStatus, jqXHR) {
-            if (data == "1") {
-                toastr.success('Cliente registrado correctamente', 'Mensaje exitoso');
+            console.log("rpta data ---> ", data);
+            if (data.length !== '') {
+                procederCompra(data);
             } else {
-                toastr.error('No pudo registrar el cliente', 'Error');
+                toastr.error('No pudo registrar el registrarPedido', 'Error');
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            toastr.error('No pudo realizar la petición registrarCliente', 'Error interno');
+            toastr.error('No pudo realizar la petición registrarPedido', 'Error interno');
         }
     });
 }

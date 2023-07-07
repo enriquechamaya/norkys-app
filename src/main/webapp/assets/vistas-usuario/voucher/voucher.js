@@ -35,6 +35,8 @@ function mostrarDatosCliente() {
     $("#lbl_nombres").append(cliente.nombres);
     $("#lbl_apellidos").append(cliente.apellidos);
     $("#lbl_correo").append(cliente.correo);
+    $("#lbl_nro_pedido").append(cliente.nroPedido);
+    $("#lbl_nro_mesa").append("00" + cliente.nroPersonas);
 }
 
 function mostrarCarrito() {

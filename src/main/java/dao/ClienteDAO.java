@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import modelo.Cliente;
 
 /**
@@ -22,18 +23,24 @@ public class ClienteDAO {
     private ConexionBD conexion = new ConexionBD();
 
     public int registrarCliente(Cliente c) {
-        int estadoRegistro = 0;
+        int clienteId = 0;
         Connection cnn = conexion.connect();
         try {
             ps = cnn.prepareStatement("insert into cliente (Cli_Nombre, Cli_Apellido, "
-                    + "Cli_Dni, Cli_Correo, Cli_FechaRegistro) values (?,?,?,?, now());");
+                    + "Cli_Dni, Cli_Correo, Cli_FechaRegistro) values (?,?,?,?, now());",
+                    PreparedStatement.RETURN_GENERATED_KEYS);
 
             ps.setString(1, c.getNombre());
             ps.setString(2, c.getApellido());
             ps.setString(3, c.getDni());
             ps.setString(4, c.getCorreo());
 
-            estadoRegistro = ps.executeUpdate();
+            ps.executeUpdate();
+
+            rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                clienteId = rs.getInt(1);
+            }
 
             ps.close();
         } catch (SQLException e) {
@@ -42,7 +49,7 @@ public class ClienteDAO {
             conexion.disconnect(cnn);
         }
 
-        return estadoRegistro;
+        return clienteId;
     }
 
 }

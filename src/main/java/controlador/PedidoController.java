@@ -4,19 +4,22 @@
  */
 package controlador;
 
+import com.google.gson.Gson;
 import dao.ClienteDAO;
+import dao.PedidoDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import modelo.Cliente;
+import modelo.Pedido;
 
 /**
  *
  * @author Usuario
  */
-public class ClienteController extends HttpServlet {
+public class PedidoController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -38,6 +41,7 @@ public class ClienteController extends HttpServlet {
         String accion = request.getParameter("accion");
 
         if (accion.equals("registrar")) {
+            // registrar cliente
             Cliente cliente = new Cliente();
             cliente.setNombre(request.getParameter("nombres"));
             cliente.setApellido(request.getParameter("apellidos"));
@@ -47,7 +51,16 @@ public class ClienteController extends HttpServlet {
             ClienteDAO clienteDAO = new ClienteDAO();
             int clienteId = clienteDAO.registrarCliente(cliente);
 
-            response.getWriter().write(String.valueOf(clienteId));
+            // registrar pedido
+            Pedido pedido = new Pedido();
+            pedido.setCliId(clienteId);
+
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            String estadoRegistro = pedidoDAO.registrarPedido(pedido);
+
+            String json = new Gson().toJson(estadoRegistro);
+
+            response.getWriter().write(json);
         }
 
         processRequest(request, response);

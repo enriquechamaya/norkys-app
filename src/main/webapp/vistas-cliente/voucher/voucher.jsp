@@ -40,11 +40,11 @@
                                 </tr>
                                 <tr>
                                     <td class="font-weight-bold"># DE PEDIDO:</td>
-                                    <td class="text-right" id="lbl_nombres">000000123</td>
+                                    <td class="text-right" id="lbl_nro_pedido"></td>
                                 </tr>
                                 <tr>
                                     <td class="font-weight-bold"># DE MESA</td>
-                                    <td class="text-right" id="lbl_nombres">023</td>
+                                    <td class="text-right" id="lbl_nro_mesa"></td>
                                 </tr>
                             </table>
                         </div>

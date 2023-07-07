@@ -11,12 +11,13 @@ import java.util.Date;
  * @author Usuario
  */
 public class Pedido {
-    
+
     private String id;
     private String estado;
     private Date fecha;
     private String tipo;
     private int mesaId;
+    private int cliId;
 
     public String getId() {
         return id;
@@ -57,7 +58,13 @@ public class Pedido {
     public void setMesaId(int mesaId) {
         this.mesaId = mesaId;
     }
-    
-    
-    
+
+    public int getCliId() {
+        return cliId;
+    }
+
+    public void setCliId(int cliId) {
+        this.cliId = cliId;
+    }
+
 }
