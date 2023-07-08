@@ -12,7 +12,7 @@
 
 <div class="row">
     <div class="col-md-6 offset-md-3 text-center">
-        <table class="table table-dark">
+        <table class="table table-sm table-dark">
             <thead>
                 <tr>
                     <th scope="col" class="text-left"># PEDIDO:</th>
