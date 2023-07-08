@@ -6,7 +6,7 @@
 <div class="text-center">
     <div class="row">
         <div class="col-md-4 offset-md-4">
-            <button type="button" class="btn btn-success btn-lg btn-block" onclick="location.href = '../usuarios/registrarUsuario.jsp'">
+            <button type="button" class="btn btn-success btn-lg btn-block" onclick="location.href = '/norkys-app-utp/RegistroUsuarioController'">
                 Registrar usuario
             </button>
         </div>

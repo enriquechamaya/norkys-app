@@ -9,37 +9,37 @@
         <form>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <input type="text" class="form-control form-control-lg" placeholder="Apellidos">
+                    <input type="text" id="in-apellidos" class="form-control form-control-lg" placeholder="Apellidos">
                 </div>
                 <div class="form-group col-md-6">
-                    <input type="text" class="form-control form-control-lg" placeholder="Nombres">
-                </div>
-            </div>
-            <br/>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control form-control-lg" placeholder="DNI">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control form-control-lg" placeholder="Usuario">
+                    <input type="text" id="in-nombre" class="form-control form-control-lg" placeholder="Nombres">
                 </div>
             </div>
             <br/>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <input type="text" class="form-control form-control-lg" placeholder="Contraseña">
+                    <input type="text" id="in-dni" class="form-control form-control-lg" placeholder="DNI">
                 </div>
                 <div class="form-group col-md-6">
-                    <input type="text" class="form-control form-control-lg" placeholder="Repetir contraseña">
+                    <input type="text" id="in-usuario" class="form-control form-control-lg" placeholder="Usuario">
+                </div>
+            </div>
+            <br/>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="text" id="in-password" class="form-control form-control-lg" placeholder="Contraseña">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" id="in-repeat-password" class="form-control form-control-lg" placeholder="Repetir contraseña">
                 </div>
             </div>
             <br/>
             <div class="text-center">
-                <button type="button" class="btn btn-success btn-lg">
+                <button type="button" id="btn-grabar" class="btn btn-success btn-lg">
                     Grabar
                 </button>
                 <br/>
-                <button type="button" class="btn btn-link text-success" onclick="location.href = '../login/login.jsp'">Cancelar</button>
+                <button type="button" class="btn btn-link text-success" onclick="location.href = '/norkys-app-utp/LoginController'">Cancelar</button>
             </div>
         </form>
     </div>
@@ -47,3 +47,4 @@
 </div>
 
 <%@include file="../base/footer.jsp" %>
+<script src="/norkys-app-utp/assets/js/registroUsuario/registroUsuario.js" type="text/javascript"></script>
