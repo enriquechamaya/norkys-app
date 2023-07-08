@@ -1,25 +1,24 @@
 $(document).ready(function () {
 
-    $("#btn_registrar").on('click', function () {
-        registrarProducto();
+    $("#btn_registrar").on('click', function (e) {
+        registrarProducto(e);
     });
 
 });
 
-function registrarProducto() {
+async function registrarProducto(e) {
+    e.preventDefault();
+    let frm = new FormData(document.getElementById("frm_registrarProducto"));
+    console.log(frm);
     $.ajax({
         type: 'POST',
         url: "../../ProductoController?accion=registrar",
-        data: {
-            nombre: $("#txt_nombre").val(),
-            cantidadPorUnidad: 1,
-            precioUnitario: $("#txt_precioUnitario").val(),
-            unidadMedida: $("#cbx_unidadMedida").val(),
-            stock: $("#txt_stock").val(),
-            estado: $("#cbx_estado").val(),
-            categoriaId: $("#cbx_categoria").val()
-        },
+        contentType: false,
+        cache: false,
+        processData: false,
+        data: frm,
         success: function (data, textStatus, jqXHR) {
+            console.log(data);
             if (data == "1") {
                 toastr.success('Producto registrado correctamente', 'Mensaje exitoso');
                 location.href = 'consultarProducto.jsp';

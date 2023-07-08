@@ -40,6 +40,8 @@ public class ProductoDAO {
                 producto.setStock(Integer.parseInt(rs.getString("Pro_Stock")));
                 producto.setEstado(rs.getString("Pro_Estado"));
                 producto.setFechaRegistro(rs.getDate("Pro_FechaRegistro"));
+                producto.setFechaActualizacion(rs.getDate("Pro_FechaActualizacion"));
+                producto.setImagen(rs.getString("imagen"));
                 producto.setCategoriaId(Integer.parseInt(rs.getString("Cat_Id")));
                 lista.add(producto);
             }
@@ -100,6 +102,7 @@ public class ProductoDAO {
                 producto.setEstado(rs.getString("Pro_Estado"));
                 producto.setFechaRegistro(rs.getDate("Pro_FechaRegistro"));
                 producto.setFechaActualizacion(rs.getDate("Pro_FechaActualizacion"));
+                producto.setImagen(rs.getString("imagen"));
                 producto.setCategoriaId(Integer.parseInt(rs.getString("Cat_Id")));
             }
             ps.close();
@@ -118,8 +121,8 @@ public class ProductoDAO {
         try {
             ps = cnn.prepareStatement("insert into producto (Pro_Nombre, Pro_CantidadPorUnidad, "
                     + "Pro_PrecioUnitario, Pro_UnidadMedida, Pro_Stock, Pro_Estado, "
-                    + "Pro_FechaRegistro, Pro_FechaActualizacion, Cat_Id) "
-                    + "values (?,?,?,?,?,?,now(),now(),?)");
+                    + "Pro_FechaRegistro, Pro_FechaActualizacion, imagen, Cat_Id) "
+                    + "values (?,?,?,?,?,?,now(),now(),?,?);");
 
             ps.setString(1, p.getNombre());
             ps.setInt(2, p.getCantidadPorUnidad());
@@ -127,7 +130,8 @@ public class ProductoDAO {
             ps.setString(4, p.getUnidadMedida());
             ps.setInt(5, p.getStock());
             ps.setString(6, p.getEstado());
-            ps.setInt(7, p.getCategoriaId());
+            ps.setString(7, p.getImagen());
+            ps.setInt(8, p.getCategoriaId());
 
             estadoRegistro = ps.executeUpdate();
 

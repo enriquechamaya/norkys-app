@@ -21,6 +21,7 @@ public class Producto {
     private String estado;
     private Date fechaRegistro;
     private Date fechaActualizacion;
+    private String imagen;
     private int categoriaId;
 
     public int getId() {
@@ -103,6 +104,14 @@ public class Producto {
         this.categoriaId = categoriaId;
     }
 
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+    
     @Override
     public String toString() {
         return "Producto{" + "id=" + id + ", nombre=" + nombre + ", cantidadPorUnidad=" + cantidadPorUnidad + ", precioUnitario=" + precioUnitario + ", unidadMedida=" + unidadMedida + ", stock=" + stock + ", estado=" + estado + ", fechaRegistro=" + fechaRegistro + ", fechaActualizacion=" + fechaActualizacion + ", categoriaId=" + categoriaId + '}';

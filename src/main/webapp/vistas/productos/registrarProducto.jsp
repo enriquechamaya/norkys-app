@@ -6,41 +6,48 @@
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
-        <form>
+        <form id="frm_registrarProducto" enctype="multipart/form-data">
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <input type="text" class="form-control form-control-lg" placeholder="Nombre" id="txt_nombre">
+                    <input type="text" class="form-control form-control-lg" placeholder="Nombre" id="txt_nombre" name="nombre">
                 </div>
                 <div class="form-group col-md-6">
-                    <input type="number" class="form-control form-control-lg" placeholder="Precio unitario" id="txt_precioUnitario">
+                    <input type="number" class="form-control form-control-lg" placeholder="Precio unitario" id="txt_precioUnitario" name="precioUnitario">
                 </div>
             </div>
             <br/>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <select class="form-control form-control-lg" id="cbx_unidadMedida">
+                    <select class="form-control form-control-lg" id="cbx_unidadMedida" name="unidadMedida">
                         <option value="-1">--SELECCIONAR UNIDAD MEDIDA--</option>
                         <option value="NIU">UNIDAD</option>
                         <option value="LTR">LITRO</option>
                     </select>
                 </div>
                 <div class="form-group col-md-6">
-                    <input type="number" class="form-control form-control-lg" placeholder="Stock" id="txt_stock">
+                    <input type="number" class="form-control form-control-lg" placeholder="Stock" id="txt_stock" name="stock">
                 </div>
             </div>
             <br/>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <select class="form-control form-control-lg" id="cbx_estado">
+                    <select class="form-control form-control-lg" id="cbx_estado" name="estado">
                         <option value="-1">--SELECCIONAR ESTADO--</option>
                         <option value="ACTIVO">ACTIVO</option>
                         <option value="INVACTIVO">INVACTIVO</option>
                     </select>
                 </div>
                 <div class="form-group col-md-6">
-                    <select class="form-control form-control-lg" id="cbx_categoria">
+                    <select class="form-control form-control-lg" id="cbx_categoria" name="categoriaId">
                         <option value="-1">--SELECCIONAR CATEGORIA--</option>
                     </select>
+                </div>
+            </div>
+            <br/>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="txt_img" class="form-label text-white">Selecciona una imagen</label>
+                    <input class="form-control form-control-lg" name="img" type="file" accept="image/png, image/jpg, image/jpeg" />
                 </div>
             </div>
             <br/>

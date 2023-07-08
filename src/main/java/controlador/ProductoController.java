@@ -8,79 +8,85 @@ import com.google.gson.Gson;
 import dao.ProductoDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
+import java.io.File;
 import java.util.List;
+import java.util.Random;
 import modelo.Producto;
 
 /**
  *
  * @author Usuario
  */
+@MultipartConfig
 public class ProductoController extends HttpServlet {
-
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     }
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-
+        
         String accion = request.getParameter("accion");
-
+        
         if (accion.equals("listar")) {
             String nombre = request.getParameter("nombre");
-
+            
             ProductoDAO productoDAO = new ProductoDAO();
             List<Producto> lista = productoDAO.listarProductos(nombre);
-
+            
             String jsonListaProductos = new Gson().toJson(lista);
             response.getWriter().write(jsonListaProductos);
-
+            
         } else if (accion.equals("obtener")) {
-
+            // falta implementar
         } else if (accion.equals("listarPorCategoria")) {
             int categoriaId = Integer.parseInt(request.getParameter("categoriaId"));
-
+            
             ProductoDAO productoDAO = new ProductoDAO();
             List<Producto> lista = productoDAO.listarProductosPorCategoria(categoriaId);
-
+            
             String jsonListaProductos = new Gson().toJson(lista);
             response.getWriter().write(jsonListaProductos);
         } else {
             response.getWriter().write("acción desconocida");
         }
-
+        
         processRequest(request, response);
     }
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
+//        response.setContentType("application/json");
+//        response.setCharacterEncoding("UTF-8");
 
         String accion = request.getParameter("accion");
-
+        System.out.println("accion ====> " + accion);
+        
         if (accion.equals("registrar")) {
             Producto p = new Producto();
             p.setNombre(request.getParameter("nombre"));
-            p.setCantidadPorUnidad(Integer.parseInt(request.getParameter("cantidadPorUnidad")));
+            p.setCantidadPorUnidad(1);
             p.setPrecioUnitario(Double.parseDouble(request.getParameter("precioUnitario")));
             p.setUnidadMedida(request.getParameter("unidadMedida"));
             p.setStock(Integer.parseInt(request.getParameter("stock")));
-            p.setEstado(request.getParameter("estado"));
+            p.setEstado(request.getParameter("estado"));            
+            p.setImagen(guardarFoto(request));
             p.setCategoriaId(Integer.parseInt(request.getParameter("categoriaId")));
-
+            
             ProductoDAO productoDAO = new ProductoDAO();
             int estadoRegistro = productoDAO.registrarProducto(p);
-
+            
             response.getWriter().write(String.valueOf(estadoRegistro));
-
         } else if (accion.equals("editar")) {
             Producto p = new Producto();
             p.setId(Integer.parseInt(request.getParameter("id")));
@@ -91,18 +97,53 @@ public class ProductoController extends HttpServlet {
             p.setStock(Integer.parseInt(request.getParameter("stock")));
             p.setEstado(request.getParameter("estado"));
             p.setCategoriaId(Integer.parseInt(request.getParameter("categoriaId")));
-
+            
             ProductoDAO productoDAO = new ProductoDAO();
             int estadoEditar = productoDAO.editarProducto(p);
-
+            
             response.getWriter().write(String.valueOf(estadoEditar));
         } else if (accion.equals("eliminar")) {
-
+            
         } else {
             response.getWriter().write("acción desconocida");
         }
-
+        
         processRequest(request, response);
     }
-
+    
+    private String obtenerRuta() {
+        String nombreProyecto = "norkys-app";
+        String rutaCompleta = getServletContext().getRealPath("");
+        int idx = rutaCompleta.indexOf(nombreProyecto);
+        String carpetaImagenes = "\\src\\main\\webapp\\img-productos";
+        return rutaCompleta.substring(0, idx + nombreProyecto.length()) + carpetaImagenes;
+    }
+    
+    private String guardarFoto(HttpServletRequest request) throws IOException, ServletException {
+        Part img = request.getPart("img");
+        String fileName = img.getSubmittedFileName();
+        String[] fileNameArray = fileName.split("\\.(?=[^\\.]+$)");
+        String name = fileNameArray[0];
+        String extension = fileNameArray[1];
+        
+        String newFileName = name.concat(generarCodigo()).concat(".").concat(extension);
+        
+        String savePath = obtenerRuta();
+        
+        File directory = new File(savePath);
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+        
+        String filePath = savePath + File.separator + newFileName;
+        img.write(filePath);
+        return newFileName;
+    }
+    
+    private String generarCodigo() {
+        Random random = new Random();
+        int numeroAleatorio = random.nextInt(9000) + 100;
+        return String.valueOf(numeroAleatorio);
+    }
+    
 }
