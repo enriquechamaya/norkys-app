@@ -109,6 +109,7 @@ public class ProductoDAO {
             }
             ps.close();
             rs.close();
+            System.out.println("producto --> " + producto);
         } catch (SQLException e) {
             System.err.println("Ocurrió un error en el método obtenerProducto " + e);
         } finally {

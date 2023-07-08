@@ -35,7 +35,6 @@ function listarProductos() {
                         <td>${this.estado}</td>
                         <td>
                             <button type="button" class="btn btn-success" onclick="location.href='../productos/editarProducto.jsp?id=${this.id}'">Editar</button>
-                            <button type="button" class="btn btn-info" onclick="javascript:pedir('${this.id}')">Pedir</button>
                         </td>
                     </tr>                
                 `);

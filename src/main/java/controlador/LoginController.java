@@ -34,7 +34,6 @@ public class LoginController extends HttpServlet {
             throws ServletException, IOException {
 
         String user = request.getParameter("usuario");
-        System.out.println("existe usuario >>>>> " + user);
 
         if (user != null) {
             HttpSession session = request.getSession();

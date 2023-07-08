@@ -22,24 +22,24 @@
     <br/>
     <div class="row">
         <div class="col-md-4 offset-md-4">
-            <button type="button" class="btn btn-success btn-lg btn-block" onclick="location.href = '../productos/consultarProducto.jsp'">
-                Consulta productos
+            <button type="button" class="btn btn-success btn-lg btn-block" onclick="location.href = '/norkys-app-utp/vistas/productos/consultarProducto.jsp'">
+                Consultar productos
             </button>
         </div>
     </div>
     <br/>
-    <div class="row">
+    <!--<div class="row">
         <div class="col-md-4 offset-md-4">
             <button type="button" class="btn btn-success btn-lg btn-block" onclick="location.href = '../pedidos/registrarPedido.jsp'">
                 Registrar pedido
             </button>
         </div>
-    </div>
+    </div>-->
     <br/>
     <div class="row">
         <div class="col-md-4 offset-md-4">
-            <button type="button" class="btn btn-success btn-lg btn-block" onclick="location.href = '../pedidos/consultarPedido.jsp'">
-                Consulta pedidos
+            <button type="button" class="btn btn-success btn-lg btn-block" onclick="location.href = '/norkys-app-utp/vistas/pedidos/consultarPedido.jsp'">
+                Consultar pedidos
             </button>
         </div>
     </div>

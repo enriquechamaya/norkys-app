@@ -9,7 +9,7 @@
     <div class="col-md-8">
         <form>
             <input type="hidden" id="productoId" value="<%= request.getParameter("id") %>"/>
-            
+
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <input type="text" class="form-control form-control-lg" placeholder="Nombre" id="txt_nombre">
