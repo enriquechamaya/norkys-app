@@ -9,6 +9,16 @@
         <servlet-name>CategoriaController</servlet-name>
         <servlet-class>controlador.CategoriaController</servlet-class>
     </servlet>
+	
+    <servlet>
+        <servlet-name>ClienteController</servlet-name>
+        <servlet-class>controlador.ClienteController</servlet-class>
+    </servlet>
+	
+    <servlet>
+        <servlet-name>PedidoController</servlet-name>
+        <servlet-class>controlador.PedidoController</servlet-class>
+    </servlet>
     
     <servlet>
         <servlet-name>LoginController</servlet-name>
@@ -25,6 +35,9 @@
         <servlet-class>controlador.RegistroUsuarioController</servlet-class>
     </servlet>
        
+
+
+
     <servlet-mapping>
         <servlet-name>ProductoController</servlet-name>
         <url-pattern>/ProductoController</url-pattern>
@@ -34,6 +47,16 @@
         <servlet-name>CategoriaController</servlet-name>
         <url-pattern>/CategoriaController</url-pattern>
     </servlet-mapping> 
+	
+    <servlet-mapping>
+        <servlet-name>ClienteController</servlet-name>
+        <url-pattern>/ClienteController</url-pattern>
+    </servlet-mapping>	
+	
+    <servlet-mapping>
+        <servlet-name>PedidoController</servlet-name>
+        <url-pattern>/PedidoController</url-pattern>
+    </servlet-mapping>	
        
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
@@ -49,7 +72,7 @@
         <servlet-name>RegistroUsuarioController</servlet-name>
         <url-pattern>/RegistroUsuarioController</url-pattern>
     </servlet-mapping>
-    
+
     <session-config>
         <session-timeout>
             30
