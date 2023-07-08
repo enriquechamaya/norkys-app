@@ -3,11 +3,7 @@
 
 <div class="row">
     <div class="col-md-10"> 
-        <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
-            <button type="button" id="btn_pollos" class="btn btn-outline-success active" onclick="botones_dinamicos(1)">POLLOS</button>
-            <button type="button" id="btn_bebidas" class="btn btn-outline-success" onclick="botones_dinamicos(2)">BEBIDAS</button>
-            <button type="button" id="btn_ensaladas" class="btn btn-outline-success" onclick="botones_dinamicos(3)">ENSALDAS</button>
-            <button type="button" id="btn_postres" class="btn btn-outline-success" onclick="botones_dinamicos(4)">POSTRES</button>
+        <div class="btn-group btn-group-lg" role="group" aria-label="Basic example" id="btn_categorias">
         </div>
     </div>
     <div class="col-md-2">

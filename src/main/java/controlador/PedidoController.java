@@ -21,7 +21,6 @@ import java.util.List;
 import modelo.Cliente;
 import modelo.DetallePedido;
 import modelo.Pedido;
-import modelo.Producto;
 
 /**
  *

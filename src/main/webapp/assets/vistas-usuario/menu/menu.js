@@ -1,7 +1,8 @@
 let carrito = new Array();
+let categorias = new Array();
 
 $(document).ready(function () {
-    botones_dinamicos(1);
+    listarCategorias();
     inicializarCarrito();
 });
 
@@ -12,28 +13,14 @@ function desactivar_botones_dinamicos() {
     $("#btn_postres").removeClass("active");
 }
 
-function botones_dinamicos(nro) {
-    desactivar_botones_dinamicos();
-    switch (nro) {
-        case 1:
-            $("#btn_pollos").addClass("active");
-            listarProductos(1);
-            break;
-        case 2:
-            $("#btn_bebidas").addClass("active");
-            listarProductos(2);
-            break;
-        case 3:
-            $("#btn_ensaladas").addClass("active");
-            listarProductos(3);
-            break;
-        case 4:
-            $("#btn_postres").addClass("active");
-            listarProductos(4);
-            break;
-        default:
-            break;
-    }
+function botones_dinamicos(id) {
+    $.each(categorias, function () {
+        $("#btn_cat_" + this.id).removeClass("active");
+        if (this.id === id) {
+            $("#btn_cat_" + id).addClass("active");
+            listarProductos(id);
+        }
+    });
 }
 
 function listarProductos(categoriaId) {
@@ -65,7 +52,7 @@ function listarProductos(categoriaId) {
 
                     column.innerHTML = `
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="../../img-productos/cocacola.jpg">
+                        <img class="card-img-top" src="../../img-productos/${data[i].imagen}">
                         <div class="card-body">
                             <h5 class="card-title text-secondary">${data[i].nombre}</h5>
                             <h4 class="card-title">S/. ${data[i].precioUnitario}</h4>
@@ -207,4 +194,24 @@ function mostrarInfoBotonQuitar() {
             mostrarBotonQuitar(this.id, this.cantidad);
         });
     }
+}
+
+function listarCategorias() {
+    $.ajax({
+        type: 'GET',
+        url: "../../CategoriaController",
+        success: function (data, textStatus, jqXHR) {
+            categorias = data;
+            $.each(data, function () {
+                $("#btn_categorias").append(`
+                    <button type="button" id="btn_cat_${this.id}" class="btn btn-outline-success" onclick="botones_dinamicos(${this.id})">${this.nombre}</button>
+                `);
+            });
+            $("#btn_cat_" + data[0].id).addClass("active");
+            listarProductos(data[0].id);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            toastr.error('No pudo realizar la petición listarProductos', 'Error interno');
+        }
+    });
 }

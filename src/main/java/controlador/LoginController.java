@@ -31,8 +31,20 @@ public class LoginController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {        
-        response.sendRedirect("/norkys-app-utp/vistas/login/login.jsp");        
+            throws ServletException, IOException {
+
+        String user = request.getParameter("usuario");
+        System.out.println("existe usuario >>>>> " + user);
+
+        if (user != null) {
+            HttpSession session = request.getSession();
+            request.setAttribute("username", user);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/vistas/menu/menuPrincipal.jsp");
+            dispatcher.forward(request, response);
+        } else {
+            response.sendRedirect("/norkys-app-utp/vistas/login/login.jsp");
+        }
+
         processRequest(request, response);
     }
 
@@ -42,25 +54,25 @@ public class LoginController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String user = request.getParameter("usuario");
         String password = request.getParameter("password");
-        
+
         UsuarioDAO usuarioDao = new UsuarioDAO();
-        Usuario usuario = usuarioDao.login(user,password);
-        
-        if(usuario.exists()){
-            HttpSession session=request.getSession();  
-            session.setAttribute("user",usuario.getNombre());
-            session.setAttribute("id",usuario.getId());
-            session.setAttribute("rol",usuario.getRolId());
-            
-            request.setAttribute("username",usuario.getNombre());
+        Usuario usuario = usuarioDao.login(user, password);
+
+        if (usuario.exists()) {
+            HttpSession session = request.getSession();
+            session.setAttribute("user", usuario.getNombre());
+            session.setAttribute("id", usuario.getId());
+            session.setAttribute("rol", usuario.getRolId());
+
+            request.setAttribute("username", usuario.getNombre());
             RequestDispatcher dispatcher = request.getRequestDispatcher("/vistas/menu/menuPrincipal.jsp");
             dispatcher.forward(request, response);
-            
+
             //response.sendRedirect("/norkys-app-utp/HomeController");
-        }else{
+        } else {
             response.sendRedirect("/norkys-app-utp/LoginController");
         }
-        
+
         processRequest(request, response);
     }
 }

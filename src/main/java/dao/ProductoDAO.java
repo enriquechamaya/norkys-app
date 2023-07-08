@@ -72,6 +72,8 @@ public class ProductoDAO {
                 producto.setStock(Integer.parseInt(rs.getString("Pro_Stock")));
                 producto.setEstado(rs.getString("Pro_Estado"));
                 producto.setFechaRegistro(rs.getDate("Pro_FechaRegistro"));
+                producto.setFechaActualizacion(rs.getDate("Pro_FechaActualizacion"));
+                producto.setImagen(rs.getString("imagen"));
                 producto.setCategoriaId(Integer.parseInt(rs.getString("Cat_Id")));
                 lista.add(producto);
             }

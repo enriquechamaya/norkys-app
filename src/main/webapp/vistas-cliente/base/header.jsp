@@ -1,4 +1,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    String usuario = request.getParameter("username");
+    System.out.println("usuario --->>>" + usuario);
+    String url = "";
+    if (usuario != null) {
+        url = "/norkys-app-utp/LoginController?usuario=" + usuario;
+    } else {
+        url = "/norkys-app-utp/LoginController";
+    }
+    System.out.println("url --->>>" + url);
+%>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,7 +28,7 @@
                 <div class="row">
                     <div class="col-md-2">
                         <br/>
-                        <button type="button" class="btn btn-primary" onclick="javascript:location.href = '../../vistas/login/login.jsp'">
+                        <button type="button" class="btn btn-primary" onclick="javascript:location.href = '<%= url %>'">
                             Intranet
                         </button>
                     </div>
