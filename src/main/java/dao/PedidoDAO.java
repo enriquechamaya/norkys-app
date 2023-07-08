@@ -9,8 +9,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import modelo.Pedido;
+import response.VistaDetallePedido;
+import response.VistaPedidos;
 
 /**
  *
@@ -35,7 +39,7 @@ public class PedidoDAO {
                     + "Mes_Id, "
                     + "Cli_Id) "
                     + "values (?,"
-                    + "'EN COCINA',"
+                    + "'PENDIENTE',"
                     + "NOW(),"
                     + "'CONSUMO EN RESTAURANT',"
                     + "1,?);");
@@ -49,12 +53,68 @@ public class PedidoDAO {
             }
             ps.close();
         } catch (SQLException e) {
-            System.err.println("Ocurrió un error en el método registrarCliente: " + e);
+            System.err.println("Ocurrió un error en el método registrarPedido: " + e);
         } finally {
             conexion.disconnect(cnn);
         }
 
         return nroPedido;
+    }
+
+    public List<VistaPedidos> listarPedidos(String nroPedido) {
+        List<VistaPedidos> lista = new ArrayList<>();
+        Connection cnn = conexion.connect();
+        try {
+            ps = cnn.prepareStatement("select p.Ped_Numero, p.Ped_Estado, p.Ped_FechaPedido, concat(c.Cli_Apellido, ' ', c.Cli_Nombre) AS cliente from pedido p "
+                    + "inner join cliente c on p.Cli_Id = c.Cli_Id "
+                    + "where p.Ped_Numero like ?;");
+            ps.setString(1, "%" + nroPedido + "%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                VistaPedidos pedido = new VistaPedidos();
+                pedido.setNroPedido(rs.getString("Ped_Numero"));
+                pedido.setEstado(rs.getString("Ped_Estado"));
+                pedido.setFecha(rs.getString("Ped_FechaPedido"));
+                pedido.setCliente(rs.getString("cliente"));
+                lista.add(pedido);
+            }
+            ps.close();
+            rs.close();
+        } catch (SQLException e) {
+            System.err.println("Ocurrió un error en el método listarPedidos " + e);
+        } finally {
+            conexion.disconnect(cnn);
+        }
+        return lista;
+    }
+
+    public List<VistaDetallePedido> listarDetallePedido(String nroPedido) {
+        List<VistaDetallePedido> lista = new ArrayList<>();
+        Connection cnn = conexion.connect();
+        try {
+            ps = cnn.prepareStatement("select p.Pro_Nombre as Producto, dp.Cantidad, dp.PrecioUnitario, (dp.PrecioUnitario * dp.Cantidad) AS Subtotal from detalle_pedido dp "
+                    + "inner join producto p on dp.Pro_Id = p.Pro_Id "
+                    + "where dp.Ped_Numero = ?;");
+            ps.setString(1, nroPedido);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                VistaDetallePedido pedido = new VistaDetallePedido();
+                pedido.setProducto(rs.getString("Producto"));
+                pedido.setCantidad(rs.getString("Cantidad"));
+                pedido.setPrecio(rs.getString("PrecioUnitario"));
+                pedido.setSubtotal(rs.getString("Subtotal"));
+                lista.add(pedido);
+            }
+            System.out.println("nropeid === " + nroPedido);
+            System.out.println("sizee === " + lista.size());
+            ps.close();
+            rs.close();
+        } catch (SQLException e) {
+            System.err.println("Ocurrió un error en el método listarDetallePedido " + e);
+        } finally {
+            conexion.disconnect(cnn);
+        }
+        return lista;
     }
 
     private String generarCodigo() {

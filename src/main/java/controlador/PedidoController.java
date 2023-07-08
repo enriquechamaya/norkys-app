@@ -21,6 +21,8 @@ import java.util.List;
 import modelo.Cliente;
 import modelo.DetallePedido;
 import modelo.Pedido;
+import response.VistaDetallePedido;
+import response.VistaPedidos;
 
 /**
  *
@@ -36,6 +38,28 @@ public class PedidoController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        String accion = request.getParameter("accion");
+
+        if (accion.equals("listar")) {
+            String nroPedido = request.getParameter("nroPedido");
+
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            List<VistaPedidos> lista = pedidoDAO.listarPedidos(nroPedido);
+            String json = new Gson().toJson(lista);
+            response.getWriter().write(json);
+        } else if (accion.equals("listar_detalle")) {
+            String nroPedido = request.getParameter("nroPedido");
+
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            List<VistaDetallePedido> lista = pedidoDAO.listarDetallePedido(nroPedido);
+            String json = new Gson().toJson(lista);
+            response.getWriter().write(json);
+        }
+
         processRequest(request, response);
     }
 

@@ -61,7 +61,6 @@ function procederCompra(nroPedido) {
 }
 
 function registrarPedido() {
-    console.log("registrarPedido", carrito);
     $.ajax({
         type: 'POST',
         url: "../../PedidoController?accion=registrar",
@@ -73,7 +72,6 @@ function registrarPedido() {
             pedido: JSON.stringify(carrito)
         },
         success: function (data, textStatus, jqXHR) {
-            console.log("rpta data ---> ", data);
             if (data.length > 0) {
                 procederCompra(data);
             } else {
