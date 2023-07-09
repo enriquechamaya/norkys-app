@@ -4,9 +4,6 @@
  */
 package controlador;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import com.google.gson.Gson;
 import dao.UsuarioDAO;
 import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
@@ -15,7 +12,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.util.List;
 import modelo.Usuario;
 
 /**
@@ -32,16 +28,29 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String accion = request.getParameter("accion");
+        HttpSession sesion = request.getSession();
 
-        String user = request.getParameter("usuario");
+        if (accion != null) {
+            if (accion.equals("logout")) {
+                if (sesion.getAttribute("username") != null) {
+                    sesion.invalidate();
 
-        if (user != null) {
-            HttpSession session = request.getSession();
-            request.setAttribute("username", user);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/vistas/menu/menuPrincipal.jsp");
-            dispatcher.forward(request, response);
+                    response.setHeader("Pragma", "no-cache");
+                    response.setHeader("Cache-Control", "no-store");
+                    response.setHeader("Expires", "0");
+                    response.setDateHeader("Expires", -1);
+
+                    response.sendRedirect("/norkys-app-utp/vistas/login/login.jsp");
+                }
+            }
         } else {
-            response.sendRedirect("/norkys-app-utp/vistas/login/login.jsp");
+            if (sesion.getAttribute("username") != null) {
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/vistas/menu/menuPrincipal.jsp");
+                dispatcher.forward(request, response);
+            } else {
+                response.sendRedirect("/norkys-app-utp/vistas/login/login.jsp");
+            }
         }
 
         processRequest(request, response);
@@ -63,11 +72,10 @@ public class LoginController extends HttpServlet {
             session.setAttribute("id", usuario.getId());
             session.setAttribute("rol", usuario.getRolId());
 
-            request.setAttribute("username", usuario.getNombre());
+            session.setAttribute("username", usuario.getNombre());
             RequestDispatcher dispatcher = request.getRequestDispatcher("/vistas/menu/menuPrincipal.jsp");
             dispatcher.forward(request, response);
 
-            //response.sendRedirect("/norkys-app-utp/HomeController");
         } else {
             response.sendRedirect("/norkys-app-utp/LoginController");
         }

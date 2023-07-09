@@ -1,7 +1,8 @@
+<%@ page session="true" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
-    String username = (String) request.getAttribute("username");
+    String username = (String) session.getAttribute("username");
 %>
 
 <!DOCTYPE html>
@@ -23,9 +24,9 @@
                     <div class="col-4">
                         <div id="info-user" style="display: block">
                             <h3 class="text-white">
-                                <strong>Usuario:</strong> <span><%= request.getAttribute("username") %></span>
+                                <strong>Usuario:</strong> <span><%= username %></span>
                             </h3>
-                            <button type="button" class="btn btn-success btn-lg" onclick="location.href = '/norkys-app-utp/LoginController'">
+                            <button type="button" class="btn btn-success btn-lg" onclick="location.href = '/norkys-app-utp/LoginController?accion=logout'">
                                 Salir
                             </button>
                         </div>
@@ -36,7 +37,7 @@
                     <div class="col-4 text-right">
                         <br/>
                         <% if (username != null) {%>
-                        <button type="button" class="btn btn-info btn-lg" onclick="location.href = '/norkys-app-utp/vistas-cliente/menu/menu.jsp?username=<%= request.getAttribute("username") %>'">
+                        <button type="button" class="btn btn-info btn-lg" onclick="location.href = '/norkys-app-utp/vistas-cliente/menu/menu.jsp'">
                             Ir a la vista cliente
                         </button>
                         <%}%>

@@ -1,3 +1,9 @@
+<%
+response.setHeader("Pragma","no-cache");
+response.setHeader("Cache-Control","no-store");
+response.setHeader("Expires","0");
+response.setDateHeader("Expires",-1);
+%>
 <%@include file="../base/header.jsp" %>
 <link href="/norkys-app-utp/assets/css/login.css" rel="stylesheet" type="text/css"/>
 

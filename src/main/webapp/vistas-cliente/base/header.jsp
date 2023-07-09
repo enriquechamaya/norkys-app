@@ -1,14 +1,4 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%
-    String usuario = request.getParameter("username");
-    String url = "";
-    if (usuario != null) {
-        url = "/norkys-app-utp/LoginController?usuario=" + usuario;
-    } else {
-        url = "/norkys-app-utp/LoginController";
-    }
-%>
-
 
 <!DOCTYPE html>
 <html>
@@ -26,7 +16,7 @@
                 <div class="row">
                     <div class="col-md-2">
                         <br/>
-                        <button type="button" class="btn btn-primary" onclick="javascript:location.href = '<%= url %>'">
+                        <button type="button" class="btn btn-primary" onclick="location.href = '/norkys-app-utp/LoginController'">
                             Intranet
                         </button>
                     </div>
