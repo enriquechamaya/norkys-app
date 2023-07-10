@@ -85,6 +85,14 @@ public class PedidoController extends HttpServlet {
             if (clienteId > 0) {
                 registrarPedido(clienteId, request, response);
             }
+        } else if (accion.equals("editar")) {
+            String nroPedido = request.getParameter("nroPedido");
+            String estado = request.getParameter("estado");
+
+            PedidoDAO pedidoDAO = new PedidoDAO();
+
+            int estadoEditar = pedidoDAO.editarEstadoPedido(nroPedido, estado);
+            response.getWriter().write(String.valueOf(estadoEditar));
         }
 
         processRequest(request, response);

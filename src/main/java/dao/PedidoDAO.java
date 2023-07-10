@@ -123,4 +123,25 @@ public class PedidoDAO {
         String codigo = "P" + numeroAleatorio;
         return codigo;
     }
+
+    public int editarEstadoPedido(String nroPedido, String estado) {
+        int estadoEditar = 0;
+        Connection cnn = conexion.connect();
+        try {
+            ps = cnn.prepareStatement("update pedido set Ped_Estado = ? "
+                    + "where Ped_Numero = ?");
+            ps.setString(1, estado);
+            ps.setString(2, nroPedido);
+
+            estadoEditar = ps.executeUpdate();
+
+            ps.close();
+        } catch (SQLException e) {
+            System.err.println("Ocurrió un error en el método editarEstadoPedido " + e);
+        } finally {
+            conexion.disconnect(cnn);
+        }
+
+        return estadoEditar;
+    }
 }
