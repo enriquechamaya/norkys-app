@@ -51,8 +51,8 @@
                 <button type="button" class="btn btn-success btn-lg" id="btn_editar">
                     Grabar
                 </button>
-                <br/>
-                <button type="button" class="btn btn-link text-success" onclick="history.back()">Cancelar</button>
+                <br/> <br/>
+                <button type="button" class="btn btn-secondary" onclick="history.back()">Cancelar</button>
             </div>
         </form>
     </div>

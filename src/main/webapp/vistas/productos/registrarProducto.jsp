@@ -55,8 +55,8 @@
                 <button type="button" class="btn btn-success btn-lg" id="btn_registrar">
                     Grabar
                 </button>
-                <br/>
-                <button type="button" class="btn btn-link text-success" onclick="location.href = '../menu/menuPrincipal.jsp'">Cancelar</button>
+                <br/><br/>
+                <button type="button" class="btn btn-secondary" onclick="location.href = '../menu/menuPrincipal.jsp'">Cancelar</button>
             </div>
         </form>
     </div>

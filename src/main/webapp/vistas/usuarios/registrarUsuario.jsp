@@ -39,7 +39,8 @@
                     Grabar
                 </button>
                 <br/>
-                <button type="button" class="btn btn-link text-success" onclick="location.href = '/norkys-app-utp/LoginController'">Cancelar</button>
+                <br/>
+                <button type="button" class="btn btn-secondary" onclick="location.href = '/norkys-app-utp/LoginController'">Cancelar</button>
             </div>
         </form>
     </div>
