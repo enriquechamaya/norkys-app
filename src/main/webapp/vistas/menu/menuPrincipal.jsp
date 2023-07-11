@@ -44,6 +44,14 @@
             </button>
         </div>
     </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <a href="../manual/manual.jsp" class="btn btn-success btn-lg btn-block text-white" target="_blank">
+                Manuel de usuario
+            </a>
+        </div>
+    </div>
 </div>
 
 <%@include file="../base/footer.jsp" %>

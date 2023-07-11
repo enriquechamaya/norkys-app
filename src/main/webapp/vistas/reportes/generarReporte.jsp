@@ -63,9 +63,6 @@
                 </table>
 
                 <div class="text-center">
-                    <a href="<%=request.getContextPath()%>/ReporteController?accion=generarExcel" class="btn btn-success">GENERAR EXCEL</a>
-
-
                     <button type="button" class="btn btn-secondary" onclick="location.href = '../menu/menuPrincipal.jsp'">Cancelar</button>
                 </div>
 

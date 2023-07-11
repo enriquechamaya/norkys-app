@@ -97,9 +97,13 @@ function llenarInfoPedido(data) {
 }
 
 function llenarInfoDetallePedido(data, total) {
-    informacionPedido.subtotal = parseFloat(total).toFixed(2);
-    informacionPedido.igv = parseFloat(informacionPedido.subtotal * 0.18).toFixed(2);
-    informacionPedido.total = parseFloat(informacionPedido.subtotal + informacionPedido.igv).toFixed(2);
+    let subtotal = parseFloat(total);
+    let igv = parseFloat(subtotal * 0.18).toFixed(2);
+    let neto = parseFloat(parseFloat(subtotal) + parseFloat(igv)).toFixed(2);
+
+    informacionPedido.subtotal = subtotal;
+    informacionPedido.igv = igv;
+    informacionPedido.total = neto;
     informacionPedido.detalle = data;
 }
 
