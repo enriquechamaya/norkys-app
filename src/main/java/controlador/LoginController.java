@@ -5,13 +5,13 @@
 package controlador;
 
 import dao.UsuarioDAO;
-import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.logging.Logger;
 import modelo.Usuario;
 
 /**
@@ -19,6 +19,8 @@ import modelo.Usuario;
  * @author Dylan
  */
 public class LoginController extends HttpServlet {
+
+    Logger logger = Logger.getLogger(this.getClass().getName());
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -28,6 +30,7 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        logger.info("LoginController::GET");
         String accion = request.getParameter("accion");
         HttpSession sesion = request.getSession();
 
@@ -41,15 +44,14 @@ public class LoginController extends HttpServlet {
                     response.setHeader("Expires", "0");
                     response.setDateHeader("Expires", -1);
 
-                    response.sendRedirect("/norkys-app-utp/vistas/login/login.jsp");
+                    response.sendRedirect("vistas/login/login.jsp");
                 }
             }
         } else {
             if (sesion.getAttribute("username") != null) {
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/vistas/menu/menuPrincipal.jsp");
-                dispatcher.forward(request, response);
+                response.sendRedirect("vistas/menu/menuPrincipal.jsp");
             } else {
-                response.sendRedirect("/norkys-app-utp/vistas/login/login.jsp");
+                response.sendRedirect("vistas/login/login.jsp");
             }
         }
 
@@ -59,6 +61,7 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        logger.info("LoginController::POST");
         response.setContentType("text/html;charset=UTF-8");
         String user = request.getParameter("usuario");
         String password = request.getParameter("password");
@@ -74,11 +77,10 @@ public class LoginController extends HttpServlet {
 
             session.setAttribute("username", usuario.getNombre());
             session.setAttribute("usernameId", usuario.getId());
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/vistas/menu/menuPrincipal.jsp");
-            dispatcher.forward(request, response);
+            response.sendRedirect("vistas/menu/menuPrincipal.jsp");
 
         } else {
-            response.sendRedirect("/norkys-app-utp/LoginController");
+            response.sendRedirect("vistas/login/login.jsp");
         }
 
         processRequest(request, response);

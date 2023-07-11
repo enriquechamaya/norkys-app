@@ -43,25 +43,8 @@ public class HomeController extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/vistas/base/header.jsp");
             dispatcher.forward(request, response);
         }else{
-            response.sendRedirect("/norkys-app-utp/vistas/login/login.jsp");
+            response.sendRedirect("/vistas/login/login.jsp");
         }
-     
-        /*try{
-            HttpSession session=request.getSession(false);
-            String username = (String)session.getAttribute("username");  
-            String id = (String)session.getAttribute("id");
-            String rol = (String)session.getAttribute("rol");    
-            
-            request.setAttribute("username", username);
-            request.setAttribute("id", id);
-            request.setAttribute("rol", rol);
-            
-            request.getRequestDispatcher("/norkys-app-utp/vistas/menu/menuPrincipal.jsp").forward(request, response);            
-            request.getRequestDispatcher("/norkys-app-utp/vistas/login/login.jsp").forward(request, response);
-            response.sendRedirect("/norkys-app-utp/vistas/menu/menuPrincipal.jsp");
-        }catch (IOException e) {
-            response.sendRedirect("/norkys-app-utp/vistas/login/login.jsp");
-        }*/
         processRequest(request, response);
     }
 

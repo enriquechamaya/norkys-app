@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.Venta;
 
 /**
@@ -18,11 +20,14 @@ import modelo.Venta;
  */
 public class VentaDAO {
 
+    Logger logger = Logger.getLogger(this.getClass().getName());
+
     private PreparedStatement ps = null;
     private ResultSet rs = null;
     private ConexionBD conexion = new ConexionBD();
 
     public int registroVenta(Venta v) {
+        logger.info("*** inicio registroVenta ***");
         int estadoRegistro = 0;
         Connection cnn = conexion.connect();
         try {
@@ -44,11 +49,11 @@ public class VentaDAO {
 
             ps.close();
         } catch (SQLException e) {
-            System.err.println("Ocurrió un error en el método registroVenta: " + e);
+            logger.log(Level.SEVERE, "Ocurri\u00f3 un error en el m\u00e9todo registroVenta: {0}", e);
         } finally {
             conexion.disconnect(cnn);
         }
-
+        logger.info("*** fin registroVenta ***");
         return estadoRegistro;
     }
 

@@ -12,6 +12,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.Categoria;
 
 /**
@@ -19,6 +21,8 @@ import modelo.Categoria;
  * @author Usuario
  */
 public class CategoriaController extends HttpServlet {
+
+    Logger logger = Logger.getLogger(this.getClass().getName());
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -34,7 +38,11 @@ public class CategoriaController extends HttpServlet {
         CategoriaDAO categoriaDAO = new CategoriaDAO();
         List<Categoria> lista = categoriaDAO.listarCategorias();
 
+        logger.log(Level.INFO, "lista categorias {0}", lista);
+
         String json = new Gson().toJson(lista);
+        logger.log(Level.INFO, "json lista categorias {0}", json);
+
         response.getWriter().write(json);
         processRequest(request, response);
     }

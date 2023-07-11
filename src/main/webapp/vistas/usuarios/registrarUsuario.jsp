@@ -1,4 +1,8 @@
 <%@include file="../base/header.jsp" %>
+
+<input type="hidden" id="txt_username" value="<%= session.getAttribute("username") %>"/>
+    
+
 <div class="text-center">
     <h1 class="display-4 text-white">Registar usuario</h1>
 </div>
@@ -40,7 +44,7 @@
                 </button>
                 <br/>
                 <br/>
-                <button type="button" class="btn btn-secondary" onclick="location.href = '/norkys-app-utp/LoginController'">Cancelar</button>
+                <button type="button" class="btn btn-secondary" onclick="location.href = '../../LoginController'">Cancelar</button>
             </div>
         </form>
     </div>
@@ -48,4 +52,4 @@
 </div>
 
 <%@include file="../base/footer.jsp" %>
-<script src="/norkys-app-utp/assets/js/registroUsuario/registroUsuario.js" type="text/javascript"></script>
+<script src="../../assets/js/registroUsuario/registroUsuario.js" type="text/javascript"></script>

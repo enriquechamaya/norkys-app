@@ -51,8 +51,8 @@ function listarDetallePedido() {
                     <tr>
                         <th>${this.producto}</th>
                         <td>${this.cantidad}</td>
-                        <td>${this.precio}</td>
-                        <td>${this.subtotal}</td>
+                        <td>${parseFloat(this.precio).toFixed(2)}</td>
+                        <td>${parseFloat(this.subtotal).toFixed(2)}</td>
                     </tr>
                 `);
                     total += this.cantidad * this.precio;
@@ -64,7 +64,7 @@ function listarDetallePedido() {
                             <h2 class="h2">TOTAL S/.</h2>
                         </td>
                         <td colspan="1" class="text-left">
-                            <h2 class="h2">${total}</h2>
+                            <h2 class="h2">${parseFloat(total).toFixed(2)}</h2>
                         </td>
                     </tr>
                 `);
@@ -97,9 +97,9 @@ function llenarInfoPedido(data) {
 }
 
 function llenarInfoDetallePedido(data, total) {
-    informacionPedido.subtotal = total;
-    informacionPedido.igv = informacionPedido.subtotal * 0.18;
-    informacionPedido.total = informacionPedido.subtotal + informacionPedido.igv;
+    informacionPedido.subtotal = parseFloat(total).toFixed(2);
+    informacionPedido.igv = parseFloat(informacionPedido.subtotal * 0.18).toFixed(2);
+    informacionPedido.total = parseFloat(informacionPedido.subtotal + informacionPedido.igv).toFixed(2);
     informacionPedido.detalle = data;
 }
 

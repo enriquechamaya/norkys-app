@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.Pedido;
 import response.VistaDetallePedido;
 import response.VistaPedidos;
@@ -22,11 +24,14 @@ import response.VistaPedidos;
  */
 public class PedidoDAO {
 
+    Logger logger = Logger.getLogger(this.getClass().getName());
+
     private PreparedStatement ps = null;
     private ResultSet rs = null;
     private ConexionBD conexion = new ConexionBD();
 
     public String registrarPedido(Pedido p) {
+        logger.info("*** incio registrarPedido ***");
         int estadoRegistro = 0;
         String nroPedido = "";
         Connection cnn = conexion.connect();
@@ -53,15 +58,16 @@ public class PedidoDAO {
             }
             ps.close();
         } catch (SQLException e) {
-            System.err.println("Ocurrió un error en el método registrarPedido: " + e);
+            logger.log(Level.SEVERE, "Ocurri\u00f3 un error en el m\u00e9todo registrarPedido: {0}", e);
         } finally {
             conexion.disconnect(cnn);
         }
-
+        logger.info("*** fin registrarPedido ***");
         return nroPedido;
     }
 
     public List<VistaPedidos> listarPedidos(String nroPedido) {
+        logger.info("*** incio listarPedidos ***");
         List<VistaPedidos> lista = new ArrayList<>();
         Connection cnn = conexion.connect();
         try {
@@ -82,14 +88,16 @@ public class PedidoDAO {
             ps.close();
             rs.close();
         } catch (SQLException e) {
-            System.err.println("Ocurrió un error en el método listarPedidos " + e);
+            logger.log(Level.SEVERE, "Ocurri\u00f3 un error en el m\u00e9todo listarPedidos {0}", e);
         } finally {
             conexion.disconnect(cnn);
         }
+        logger.info("*** fin listarPedidos ***");
         return lista;
     }
 
     public List<VistaDetallePedido> listarDetallePedido(String nroPedido) {
+        logger.info("*** inicio listarDetallePedido ***");
         List<VistaDetallePedido> lista = new ArrayList<>();
         Connection cnn = conexion.connect();
         try {
@@ -111,10 +119,11 @@ public class PedidoDAO {
             ps.close();
             rs.close();
         } catch (SQLException e) {
-            System.err.println("Ocurrió un error en el método listarDetallePedido " + e);
+            logger.log(Level.SEVERE, "Ocurri\u00f3 un error en el m\u00e9todo listarDetallePedido {0}", e);
         } finally {
             conexion.disconnect(cnn);
         }
+        logger.info("*** fin listarDetallePedido ***");
         return lista;
     }
 
@@ -126,6 +135,7 @@ public class PedidoDAO {
     }
 
     public int editarEstadoPedido(String nroPedido, String estado) {
+        logger.info("*** inicio editarEstadoPedido ***");
         int estadoEditar = 0;
         Connection cnn = conexion.connect();
         try {
@@ -138,11 +148,11 @@ public class PedidoDAO {
 
             ps.close();
         } catch (SQLException e) {
-            System.err.println("Ocurrió un error en el método editarEstadoPedido " + e);
+            logger.log(Level.SEVERE, "Ocurri\u00f3 un error en el m\u00e9todo editarEstadoPedido {0}", e);
         } finally {
             conexion.disconnect(cnn);
         }
-
+        logger.info("*** fin editarEstadoPedido ***");
         return estadoEditar;
     }
 }

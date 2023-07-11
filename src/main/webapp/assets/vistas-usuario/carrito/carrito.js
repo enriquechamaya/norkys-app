@@ -28,8 +28,8 @@ function listarCarrito() {
                 <th scope="row">${this.id}</th>
                 <td>${this.nombre}</td>
                 <td>${this.cantidad}</td>
-                <td>${this.precio}</td>
-                <td><b>${this.cantidad * this.precio}</b></td>
+                <td>${this.precio.toFixed(2)}</td>
+                <td><b>${(this.cantidad * this.precio).toFixed(2)}</b></td>
             </tr>
         `);
         total += this.cantidad * this.precio;
@@ -40,7 +40,7 @@ function listarCarrito() {
                 <h2 class="h2">TOTAL S/.</h2>
             </td>
             <td colspan="1" class="text-left">
-                <h2 class="h2">${total}</h2>
+                <h2 class="h2">${total.toFixed(2)}</h2>
             </td>
         </tr>
     `);

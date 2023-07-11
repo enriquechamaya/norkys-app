@@ -19,9 +19,9 @@ function inicializarInformacionPedido() {
     $("#lbl_cliente").append(informacionPedido.cliente);
     $("#lbl_usuario").append(informacionPedido.username);
 
-    $("#lbl_subtotal").append(`<b>${informacionPedido.subtotal.toFixed(2)}</b>`);
-    $("#lbl_igv").append(`<b>${informacionPedido.igv.toFixed(2)}</b>`);
-    $("#lbl_total").append(`<b>${informacionPedido.total.toFixed(2)}</b>`);
+    $("#lbl_subtotal").append(`<b>${ parseFloat(informacionPedido.subtotal).toFixed(2)}</b>`);
+    $("#lbl_igv").append(`<b>${ parseFloat(informacionPedido.igv).toFixed(2)}</b>`);
+    $("#lbl_total").append(`<b>${ parseFloat(informacionPedido.total).toFixed(2)}</b>`);
 }
 
 function inicializarInformacionDetallePedido() {
@@ -30,8 +30,8 @@ function inicializarInformacionDetallePedido() {
             <tr>
                 <td>${this.producto}</td>
                 <td>${this.cantidad}</td>
-                <td>${this.precio}</td>
-                <td><b>${this.subtotal}</b></td>
+                <td>${parseFloat(this.precio).toFixed(2)}</td>
+                <td><b>${parseFloat(this.subtotal).toFixed(2)}</b></td>
             </tr>
         `);
     });
@@ -45,9 +45,9 @@ function registrarVenta() {
             $.LoadingOverlay("show");
         },
         data: {
-            subtotal: informacionPedido.subtotal.toFixed(2),
-            igv: informacionPedido.igv.toFixed(2),
-            total: informacionPedido.total.toFixed(2),
+            subtotal: parseFloat(informacionPedido.subtotal).toFixed(2),
+            igv: parseFloat(informacionPedido.igv).toFixed(2),
+            total: parseFloat(informacionPedido.total).toFixed(2),
 
             pedidoId: informacionPedido.nroPedido,
             clienteId: parseInt(informacionPedido.clienteId),

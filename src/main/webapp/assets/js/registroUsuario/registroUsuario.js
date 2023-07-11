@@ -12,7 +12,7 @@ $(document).ready(function () {
 
         if (datosValidos(data)) {
             $.ajax({
-                url: "/norkys-app-utp/RegistroUsuarioController",
+                url: "../../RegistroUsuarioController",
                 type: 'POST',
                 dataType: 'json',
                 data: data,

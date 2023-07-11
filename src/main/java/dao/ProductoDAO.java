@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.Producto;
 
 /**
@@ -19,11 +21,14 @@ import modelo.Producto;
  */
 public class ProductoDAO {
 
+    Logger logger = Logger.getLogger(this.getClass().getName());
+
     private PreparedStatement ps = null;
     private ResultSet rs = null;
     private ConexionBD conexion = new ConexionBD();
 
     public List<Producto> listarProductos(String nombre) {
+        logger.info("*** incio listarProductos ***");
         List<Producto> lista = new ArrayList<>();
         Connection cnn = conexion.connect();
         try {
@@ -48,14 +53,16 @@ public class ProductoDAO {
             ps.close();
             rs.close();
         } catch (SQLException e) {
-            System.err.println("Ocurrió un error en el método listarProductos " + e);
+            logger.log(Level.SEVERE, "Ocurri\u00f3 un error en el m\u00e9todo listarProductos {0}", e);
         } finally {
             conexion.disconnect(cnn);
         }
+        logger.info("*** fin listarProductos ***");
         return lista;
     }
 
     public List<Producto> listarProductosPorCategoria(int categoriaId) {
+        logger.info("*** incio listarProductosPorCategoria ***");
         List<Producto> lista = new ArrayList<>();
         Connection cnn = conexion.connect();
         try {
@@ -80,14 +87,16 @@ public class ProductoDAO {
             ps.close();
             rs.close();
         } catch (SQLException e) {
-            System.err.println("Ocurrió un error en el método listarProductosPorCategoria " + e);
+            logger.log(Level.SEVERE, "Ocurri\u00f3 un error en el m\u00e9todo listarProductosPorCategoria {0}", e);
         } finally {
             conexion.disconnect(cnn);
         }
+        logger.info("*** fin listarProductosPorCategoria ***");
         return lista;
     }
 
     public Producto obtenerProducto(int id) {
+        logger.info("*** inicio obtenerProducto ***");
         Producto producto = new Producto();
         Connection cnn = conexion.connect();
         try {
@@ -110,14 +119,16 @@ public class ProductoDAO {
             ps.close();
             rs.close();
         } catch (SQLException e) {
-            System.err.println("Ocurrió un error en el método obtenerProducto " + e);
+            logger.log(Level.SEVERE, "Ocurri\u00f3 un error en el m\u00e9todo obtenerProducto {0}", e);
         } finally {
             conexion.disconnect(cnn);
         }
+        logger.info("*** fin obtenerProducto ***");
         return producto;
     }
 
     public int registrarProducto(Producto p) {
+        logger.info("*** inicio registrarProducto ***");
         int estadoRegistro = 0;
         Connection cnn = conexion.connect();
         try {
@@ -139,15 +150,16 @@ public class ProductoDAO {
 
             ps.close();
         } catch (SQLException e) {
-            System.err.println("Ocurrió un error en el método registrarProducto: " + e);
+            logger.log(Level.SEVERE, "Ocurri\u00f3 un error en el m\u00e9todo registrarProducto: {0}", e);
         } finally {
             conexion.disconnect(cnn);
         }
-
+        logger.info("*** fin registrarProducto ***");
         return estadoRegistro;
     }
 
     public int editarProducto(Producto p) {
+        logger.info("*** inicio editarProducto ***");
         int estadoEditar = 0;
         Connection cnn = conexion.connect();
         try {
@@ -169,15 +181,16 @@ public class ProductoDAO {
 
             ps.close();
         } catch (SQLException e) {
-            System.err.println("Ocurrió un error en el método editarProducto " + e);
+            logger.log(Level.SEVERE, "Ocurri\u00f3 un error en el m\u00e9todo editarProducto {0}", e);
         } finally {
             conexion.disconnect(cnn);
         }
-
+        logger.info("*** fin editarProducto ***");
         return estadoEditar;
     }
 
     public int editarStock(Producto p) {
+        logger.info("*** inicio editarStock ***");
         int estadoEditar = 0;
         Connection cnn = conexion.connect();
         try {
@@ -191,11 +204,11 @@ public class ProductoDAO {
 
             ps.close();
         } catch (SQLException e) {
-            System.err.println("Ocurrió un error en el método editarStock " + e);
+            logger.log(Level.SEVERE, "Ocurri\u00f3 un error en el m\u00e9todo editarStock {0}", e);
         } finally {
             conexion.disconnect(cnn);
         }
-
+        logger.info("*** fin editarStock ***");
         return estadoEditar;
     }
 
