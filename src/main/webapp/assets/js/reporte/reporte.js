@@ -18,7 +18,7 @@ function listarReporte() {
         },
         success: function (data, textStatus, jqXHR) {
             let datajson = JSON.parse(data);
-            console.log(datajson)
+            $("#tbl_reporte").empty();
             if (datajson.length > 0) {
                 $.each(datajson, function () {
                     $("#tbl_reporte").append(`
