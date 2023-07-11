@@ -4,10 +4,6 @@
  */
 package controlador;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import com.google.gson.Gson;
-import dao.UsuarioDAO;
 import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -15,8 +11,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.util.List;
-import modelo.Usuario;
 
 /**
  *
@@ -41,19 +35,9 @@ public class HomeController extends HttpServlet {
             Integer id = (Integer) session.getAttribute("id");
             Integer rol = (Integer) session.getAttribute("rol");    
             
-            System.out.println(username);
             request.setAttribute("username", username);
             request.setAttribute("id", id);
             request.setAttribute("rol", rol);
-            System.out.println(request.getAttribute("username"));
-            /*RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/vistas/menu/menuPrincipal.jsp");
-            dispatcher.forward(request, response);
-            response.sendRedirect("/norkys-app-utp/vistas/menu/menuPrincipal.jsp");*/
-            
-            
-            /*request.getRequestDispatcher("/vistas/menu/menuPrincipal.jsp").forward(request,response);            
-            session.setAttribute("username",username);
-            response.sendRedirect("/vistas/menu/menuPrincipal.jsp");*/
 
             
             RequestDispatcher dispatcher = request.getRequestDispatcher("/vistas/base/header.jsp");

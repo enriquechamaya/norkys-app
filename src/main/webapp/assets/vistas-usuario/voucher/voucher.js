@@ -20,7 +20,6 @@ function inicializarCarrito() {
             carrito.push(data[0]);
         }
     }
-    console.log(carrito);
 }
 
 function inicializarCliente() {
