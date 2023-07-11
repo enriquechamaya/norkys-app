@@ -31,6 +31,9 @@ function listarProductos(categoriaId) {
         data: {
             categoriaId: categoriaId
         },
+        beforeSend: function (xhr) {
+            $.LoadingOverlay("show");
+        },
         success: function (data, textStatus, jqXHR) {
             if (data.length > 0) {
                 var container = document.getElementById('container_productos');
@@ -85,6 +88,7 @@ function listarProductos(categoriaId) {
         complete: function (jqXHR, textStatus) {
             mostrarInfoCantidad();
             mostrarInfoBotonQuitar();
+            $.LoadingOverlay("hide");
         }
     });
 }
@@ -200,6 +204,9 @@ function listarCategorias() {
     $.ajax({
         type: 'GET',
         url: "../../CategoriaController",
+        beforeSend: function (xhr) {
+            $.LoadingOverlay("show");
+        },
         success: function (data, textStatus, jqXHR) {
             categorias = data;
             $.each(data, function () {
@@ -212,6 +219,9 @@ function listarCategorias() {
         },
         error: function (jqXHR, textStatus, errorThrown) {
             toastr.error('No pudo realizar la petición listarProductos', 'Error interno');
+        },
+        complete: function (jqXHR, textStatus) {
+            $.LoadingOverlay("hide");
         }
     });
 }

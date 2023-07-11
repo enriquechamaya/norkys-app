@@ -16,6 +16,9 @@ $(document).ready(function () {
                 type: 'POST',
                 dataType: 'json',
                 data: data,
+                beforeSend: function (xhr) {
+                    $.LoadingOverlay("show");
+                },
                 success: function (response) {
                     if (response.css == 'danger') {
                         toastr.error(response.data, 'Error al registrar usuario');
@@ -28,6 +31,9 @@ $(document).ready(function () {
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     toastr.error('Ocuriro un error al registrar al nuevo usuario', 'Error interno');
+                },
+                complete: function (jqXHR, textStatus) {
+                    $.LoadingOverlay("hide");
                 }
             });
         }

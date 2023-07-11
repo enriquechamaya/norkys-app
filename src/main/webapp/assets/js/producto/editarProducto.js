@@ -12,6 +12,9 @@ function listarCategorias() {
     $.ajax({
         type: 'GET',
         url: "../../CategoriaController",
+        beforeSend: function (xhr) {
+            $.LoadingOverlay("show");
+        },
         success: function (data, textStatus, jqXHR) {
             var $dropdown = $("#cbx_categoria");
             $.each(data, function () {
@@ -21,6 +24,9 @@ function listarCategorias() {
         },
         error: function (jqXHR, textStatus, errorThrown) {
             toastr.error('No pudo realizar la petición listarProductos', 'Error interno');
+        },
+        complete: function (jqXHR, textStatus) {
+            $.LoadingOverlay("hide");
         }
     });
 }
@@ -32,6 +38,9 @@ function obtenerProducto() {
         data: {
             productoId: $("#productoId").val()
         },
+        beforeSend: function (xhr) {
+            $.LoadingOverlay("show");
+        },
         success: function (data, textStatus, jqXHR) {
             $("#txt_nombre").val(data.nombre);
             $("#txt_precioUnitario").val(data.precioUnitario);
@@ -42,6 +51,9 @@ function obtenerProducto() {
         },
         error: function (jqXHR, textStatus, errorThrown) {
             toastr.error('No pudo realizar la petición obtenerProducto', 'Error interno');
+        },
+        complete: function (jqXHR, textStatus) {
+            $.LoadingOverlay("hide");
         }
     });
 }
@@ -60,6 +72,9 @@ function editarProducto() {
             estado: $("#cbx_estado").val(),
             categoriaId: $("#cbx_categoria").val()
         },
+        beforeSend: function (xhr) {
+            $.LoadingOverlay("show");
+        },
         success: function (data, textStatus, jqXHR) {
             if (data == "1") {
                 toastr.success('Producto editado correctamente', 'Mensaje exitoso');
@@ -70,6 +85,9 @@ function editarProducto() {
         },
         error: function (jqXHR, textStatus, errorThrown) {
             toastr.error('No pudo realizar la petición editarProducto', 'Error interno');
+        },
+        complete: function (jqXHR, textStatus) {
+            $.LoadingOverlay("hide");
         }
     });
 }

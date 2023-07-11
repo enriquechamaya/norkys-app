@@ -11,6 +11,9 @@ function listarPedido() {
         data: {
             nroPedido: $("#txt_nroPedido").val()
         },
+        beforeSend: function (xhr) {
+            $.LoadingOverlay("show");
+        },
         success: function (data, textStatus, jqXHR) {
             $("#lbl_nroPedido").append(data[0].nroPedido);
             $("#lbl_fechaPedido").append(data[0].fecha);
@@ -23,6 +26,9 @@ function listarPedido() {
         },
         error: function (jqXHR, textStatus, errorThrown) {
             toastr.error('No pudo realizar la petición listarPedido', 'Error interno');
+        },
+        complete: function (jqXHR, textStatus) {
+            $.LoadingOverlay("hide");
         }
     });
 }
@@ -33,6 +39,9 @@ function listarDetallePedido() {
         url: "../../PedidoController?accion=listar_detalle",
         data: {
             nroPedido: $("#txt_nroPedido").val()
+        },
+        beforeSend: function (xhr) {
+            $.LoadingOverlay("show");
         },
         success: function (data, textStatus, jqXHR) {
             let total = 0;
@@ -70,6 +79,9 @@ function listarDetallePedido() {
         },
         error: function (jqXHR, textStatus, errorThrown) {
             toastr.error('No pudo realizar la petición listarDetallePedido', 'Error interno');
+        },
+        complete: function (jqXHR, textStatus) {
+            $.LoadingOverlay("hide");
         }
     });
 }

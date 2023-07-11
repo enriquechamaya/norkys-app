@@ -17,6 +17,9 @@ async function registrarProducto(e) {
         cache: false,
         processData: false,
         data: frm,
+        beforeSend: function (xhr) {
+            $.LoadingOverlay("show");
+        },
         success: function (data, textStatus, jqXHR) {
             console.log(data);
             if (data == "1") {
@@ -28,6 +31,9 @@ async function registrarProducto(e) {
         },
         error: function (jqXHR, textStatus, errorThrown) {
             toastr.error('No pudo realizar la petición registrarProducto', 'Error interno');
+        },
+        complete: function (jqXHR, textStatus) {
+            $.LoadingOverlay("hide");
         }
     });
 }

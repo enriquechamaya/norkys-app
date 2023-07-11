@@ -16,6 +16,9 @@ function listarPedido() {
         data: {
             nroPedido: $("#txt_nroPedido").val()
         },
+        beforeSend: function (xhr) {
+            $.LoadingOverlay("show");
+        },
         success: function (data, textStatus, jqXHR) {
             if (data.length > 0) {
                 $.each(data, function () {
@@ -59,6 +62,9 @@ function listarPedido() {
         },
         error: function (jqXHR, textStatus, errorThrown) {
             toastr.error('No pudo realizar la petición listarPedido', 'Error interno');
+        },
+        complete: function (jqXHR, textStatus) {
+            $.LoadingOverlay("hide");
         }
     });
 }

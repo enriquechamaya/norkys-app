@@ -23,6 +23,9 @@ function listarProductos() {
         data: {
             nombre: $("#txt_buscarProducto").val()
         },
+        beforeSend: function (xhr) {
+            $.LoadingOverlay("show");
+        },
         success: function (data, textStatus, jqXHR) {
             if (data.length > 0) {
                 $.each(data, function () {
@@ -50,6 +53,9 @@ function listarProductos() {
         },
         error: function (jqXHR, textStatus, errorThrown) {
             toastr.error('No pudo realizar la petición listarProductos', 'Error interno');
+        },
+        complete: function (jqXHR, textStatus) {
+            $.LoadingOverlay("hide");
         }
     });
 }

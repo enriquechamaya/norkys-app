@@ -41,6 +41,9 @@ function registrarVenta() {
     $.ajax({
         type: 'POST',
         url: "../../VentaController?accion=registrar",
+        beforeSend: function (xhr) {
+            $.LoadingOverlay("show");
+        },
         data: {
             subtotal: informacionPedido.subtotal.toFixed(2),
             igv: informacionPedido.igv.toFixed(2),
@@ -63,6 +66,9 @@ function registrarVenta() {
         },
         error: function (jqXHR, textStatus, errorThrown) {
             toastr.error('No pudo realizar la petición registrarProducto', 'Error interno');
+        },
+        complete: function (jqXHR, textStatus) {
+            $.LoadingOverlay("hide");
         }
     });
 }

@@ -71,6 +71,9 @@ function registrarPedido() {
             correo: $("#txt_correo").val(),
             pedido: JSON.stringify(carrito)
         },
+        beforeSend: function (xhr) {
+            $.LoadingOverlay("show");
+        },
         success: function (data, textStatus, jqXHR) {
             if (data.length > 0) {
                 procederCompra(data);
@@ -80,6 +83,9 @@ function registrarPedido() {
         },
         error: function (jqXHR, textStatus, errorThrown) {
             toastr.error('No pudo realizar la petición registrarPedido', 'Error interno');
+        },
+        complete: function (jqXHR, textStatus) {
+            $.LoadingOverlay("hide");
         }
     });
 }
