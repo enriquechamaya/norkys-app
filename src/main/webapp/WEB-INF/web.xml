@@ -32,6 +32,10 @@
         <servlet-name>VentaController</servlet-name>
         <servlet-class>controlador.VentaController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReporteController</servlet-name>
+        <servlet-class>controlador.ReporteController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ProductoController</servlet-name>
         <url-pattern>/ProductoController</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>VentaController</servlet-name>
         <url-pattern>/VentaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReporteController</servlet-name>
+        <url-pattern>/ReporteController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

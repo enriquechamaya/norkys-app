@@ -7,6 +7,9 @@ function listarCategorias() {
     $.ajax({
         type: 'GET',
         url: "../../CategoriaController",
+        beforeSend: function (xhr) {
+            $.LoadingOverlay("show");
+        },
         success: function (data, textStatus, jqXHR) {
             var $dropdown = $("#cbx_categoria");
             $.each(data, function () {
@@ -15,6 +18,9 @@ function listarCategorias() {
         },
         error: function (jqXHR, textStatus, errorThrown) {
             toastr.error('No pudo realizar la petición listarProductos', 'Error interno');
+        },
+        complete: function (jqXHR, textStatus) {
+            $.LoadingOverlay("hide");
         }
     });
 }
