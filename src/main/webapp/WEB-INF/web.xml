@@ -4,75 +4,66 @@
         <servlet-name>ProductoController</servlet-name>
         <servlet-class>controlador.ProductoController</servlet-class>
     </servlet>
-    
     <servlet>
         <servlet-name>CategoriaController</servlet-name>
         <servlet-class>controlador.CategoriaController</servlet-class>
     </servlet>
-	
     <servlet>
         <servlet-name>ClienteController</servlet-name>
         <servlet-class>controlador.ClienteController</servlet-class>
     </servlet>
-	
     <servlet>
         <servlet-name>PedidoController</servlet-name>
         <servlet-class>controlador.PedidoController</servlet-class>
     </servlet>
-    
     <servlet>
         <servlet-name>LoginController</servlet-name>
         <servlet-class>controlador.LoginController</servlet-class>
     </servlet>
-    
-    <servlet>        
+    <servlet>
         <servlet-name>HomeController</servlet-name>
         <servlet-class>controlador.HomeController</servlet-class>
     </servlet>
-    
     <servlet>
         <servlet-name>RegistroUsuarioController</servlet-name>
         <servlet-class>controlador.RegistroUsuarioController</servlet-class>
     </servlet>
-       
-
-
-
+    <servlet>
+        <servlet-name>VentaController</servlet-name>
+        <servlet-class>controlador.VentaController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ProductoController</servlet-name>
         <url-pattern>/ProductoController</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>CategoriaController</servlet-name>
         <url-pattern>/CategoriaController</url-pattern>
-    </servlet-mapping> 
-	
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ClienteController</servlet-name>
         <url-pattern>/ClienteController</url-pattern>
-    </servlet-mapping>	
-	
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PedidoController</servlet-name>
         <url-pattern>/PedidoController</url-pattern>
-    </servlet-mapping>	
-       
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
     </servlet-mapping>
-    
-     <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/HomeController</url-pattern>
     </servlet-mapping>
-      
     <servlet-mapping>
         <servlet-name>RegistroUsuarioController</servlet-name>
         <url-pattern>/RegistroUsuarioController</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>VentaController</servlet-name>
+        <url-pattern>/VentaController</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

@@ -77,11 +77,10 @@ public class ProductoController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        response.setContentType("application/json");
-//        response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
 
         String accion = request.getParameter("accion");
-        System.out.println("accion ====> " + accion);
 
         if (accion.equals("registrar")) {
             Producto p = new Producto();

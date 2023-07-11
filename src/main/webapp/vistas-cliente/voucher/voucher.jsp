@@ -5,7 +5,7 @@
         <div class="card" >
             <div class="card-body mx-4">
                 <div class="container">
-                    <p class="my-5 mx-5" style="font-size: 30px;">Gracias, tu pedido ha sido registrado con éxito</p>
+                    <p class="my-5 mx-5" style="font-size: 30px;">Gracias, tu pedido fue registrado</p>
                     <div class="row">
                         <div class="col-md-10 offset-md-1">
                             <table width="100%">

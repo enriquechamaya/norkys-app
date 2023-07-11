@@ -9,11 +9,29 @@ package response;
  * @author Usuario
  */
 public class VistaDetallePedido {
-    
+
+    private int productoId;
+    private int stock;
     private String producto;
     private String cantidad;
     private String precio;
     private String subtotal;
+
+    public int getProductoId() {
+        return productoId;
+    }
+
+    public void setProductoId(int productoId) {
+        this.productoId = productoId;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
 
     public String getProducto() {
         return producto;
@@ -47,5 +65,4 @@ public class VistaDetallePedido {
         this.subtotal = subtotal;
     }
 
-    
 }

@@ -12,6 +12,7 @@ public class VistaPedidos {
     private String nroPedido;
     private String estado;
     private String fecha;
+    private int clienteId;
     private String cliente;
 
     public String getNroPedido() {
@@ -45,5 +46,14 @@ public class VistaPedidos {
     public void setCliente(String cliente) {
         this.cliente = cliente;
     }
+
+    public int getClienteId() {
+        return clienteId;
+    }
+
+    public void setClienteId(int clienteId) {
+        this.clienteId = clienteId;
+    }
+    
     
 }

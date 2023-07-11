@@ -19,21 +19,21 @@ function listarPedido() {
         success: function (data, textStatus, jqXHR) {
             if (data.length > 0) {
                 $.each(data, function () {
-                    let estado = '', botonEntregado = '', botonPagado = '';
+                    let estado = '', botonEntregado = '', botonVerDetalle = '';
                     if (this.estado === 'PENDIENTE') {
                         estado = '<span class="badge badge-danger">PENDIENTE</span>';
                         botonEntregado = `<button type="button" class="btn btn-info" onclick="javascript:cambiarEstadoPedido('${this.nroPedido}', 'ENTREGADO')">Pedido Entregado</button>`;
-                        botonPagado = '';
+                        botonVerDetalle = '';
                     }
                     if (this.estado === 'ENTREGADO') {
                         estado = '<span class="badge badge-info">ENTREGADO</span>';
-                        botonPagado = `<button type="button" class="btn btn-success" onclick="javascript:verDetallePedido('${this.nroPedido}')">Realizar pago</button>`;
+                        botonVerDetalle = `<button type="button" class="btn btn-success" onclick="javascript:verDetallePedido('${this.nroPedido}')">VER DETALLE</button>`;
                         botonEntregado = '';
                     }
                     if (this.estado === 'PAGADO') {
                         estado = '<span class="badge badge-success">PAGADO</span>';
                         botonEntregado = '';
-                        botonPagado = '';
+                        botonVerDetalle = '';
                     }
                     $("#tbl_productos").append(`
                     <tr>
@@ -43,7 +43,7 @@ function listarPedido() {
                         <td>${estado}</td>
                         <td>
                             ${botonEntregado}
-                            ${botonPagado}
+                            ${botonVerDetalle}
                         </td>
                     </tr>
                 `);

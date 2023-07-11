@@ -73,6 +73,7 @@ public class LoginController extends HttpServlet {
             session.setAttribute("rol", usuario.getRolId());
 
             session.setAttribute("username", usuario.getNombre());
+            session.setAttribute("usernameId", usuario.getId());
             RequestDispatcher dispatcher = request.getRequestDispatcher("/vistas/menu/menuPrincipal.jsp");
             dispatcher.forward(request, response);
 

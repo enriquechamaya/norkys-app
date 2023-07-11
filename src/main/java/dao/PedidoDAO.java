@@ -65,7 +65,7 @@ public class PedidoDAO {
         List<VistaPedidos> lista = new ArrayList<>();
         Connection cnn = conexion.connect();
         try {
-            ps = cnn.prepareStatement("select p.Ped_Numero, p.Ped_Estado, p.Ped_FechaPedido, concat(c.Cli_Apellido, ' ', c.Cli_Nombre) AS cliente from pedido p "
+            ps = cnn.prepareStatement("select p.Ped_Numero, p.Ped_Estado, p.Ped_FechaPedido, c.Cli_Id, concat(c.Cli_Apellido, ' ', c.Cli_Nombre) AS cliente from pedido p "
                     + "inner join cliente c on p.Cli_Id = c.Cli_Id "
                     + "where p.Ped_Numero like ?;");
             ps.setString(1, "%" + nroPedido + "%");
@@ -75,6 +75,7 @@ public class PedidoDAO {
                 pedido.setNroPedido(rs.getString("Ped_Numero"));
                 pedido.setEstado(rs.getString("Ped_Estado"));
                 pedido.setFecha(rs.getString("Ped_FechaPedido"));
+                pedido.setClienteId(rs.getInt("Cli_Id"));
                 pedido.setCliente(rs.getString("cliente"));
                 lista.add(pedido);
             }
@@ -92,21 +93,21 @@ public class PedidoDAO {
         List<VistaDetallePedido> lista = new ArrayList<>();
         Connection cnn = conexion.connect();
         try {
-            ps = cnn.prepareStatement("select p.Pro_Nombre as Producto, dp.Cantidad, dp.PrecioUnitario, (dp.PrecioUnitario * dp.Cantidad) AS Subtotal from detalle_pedido dp "
+            ps = cnn.prepareStatement("select p.Pro_Id, p.Pro_Stock, p.Pro_Nombre as Producto, dp.Cantidad, dp.PrecioUnitario, (dp.PrecioUnitario * dp.Cantidad) AS Subtotal from detalle_pedido dp "
                     + "inner join producto p on dp.Pro_Id = p.Pro_Id "
                     + "where dp.Ped_Numero = ?;");
             ps.setString(1, nroPedido);
             rs = ps.executeQuery();
             while (rs.next()) {
                 VistaDetallePedido pedido = new VistaDetallePedido();
+                pedido.setProductoId(rs.getInt("Pro_Id"));
+                pedido.setStock(rs.getInt("Pro_Stock"));
                 pedido.setProducto(rs.getString("Producto"));
                 pedido.setCantidad(rs.getString("Cantidad"));
                 pedido.setPrecio(rs.getString("PrecioUnitario"));
                 pedido.setSubtotal(rs.getString("Subtotal"));
                 lista.add(pedido);
             }
-            System.out.println("nropeid === " + nroPedido);
-            System.out.println("sizee === " + lista.size());
             ps.close();
             rs.close();
         } catch (SQLException e) {

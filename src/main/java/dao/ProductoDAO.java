@@ -178,4 +178,26 @@ public class ProductoDAO {
         return estadoEditar;
     }
 
+    public int editarStock(Producto p) {
+        int estadoEditar = 0;
+        Connection cnn = conexion.connect();
+        try {
+            ps = cnn.prepareStatement("update producto set Pro_Stock=? "
+                    + "where Pro_Id=?");
+
+            ps.setInt(1, p.getStock());
+            ps.setInt(2, p.getId());
+
+            estadoEditar = ps.executeUpdate();
+
+            ps.close();
+        } catch (SQLException e) {
+            System.err.println("Ocurrió un error en el método editarStock " + e);
+        } finally {
+            conexion.disconnect(cnn);
+        }
+
+        return estadoEditar;
+    }
+
 }

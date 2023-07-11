@@ -1,6 +1,7 @@
 <%@include file="../base/header.jsp" %>
 <%
     String nroPedido = request.getParameter("nroPedido");
+    int usernameId = (int) session.getAttribute("usernameId");
 %>
 
 <div class="col-md-4 offset-md-4 text-center">
@@ -8,6 +9,8 @@
 </div>
 
 <input type="hidden" id="txt_nroPedido" value="<%= nroPedido %>" />
+<input type="hidden" id="txt_username" value="<%= username %>" />
+<input type="hidden" id="txt_usernameId" value="<%= usernameId %>" />
 
 
 <div class="row">
@@ -61,7 +64,7 @@
     </div>
     <div class="col-md-4">&nbsp;</div>
     <div class="col-md-4 text-right">
-        <button type="button" class="btn btn-success btn-lg">
+        <button type="button" class="btn btn-success btn-lg" onclick="realizarVenta()">
             Proceder con la venta
         </button>
     </div>

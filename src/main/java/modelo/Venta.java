@@ -101,5 +101,10 @@ public class Venta {
     public void setUsuarioId(int usuarioId) {
         this.usuarioId = usuarioId;
     }
+
+    @Override
+    public String toString() {
+        return "Venta{" + "id=" + id + ", numeroDocumento=" + numeroDocumento + ", tipoDocumento=" + tipoDocumento + ", subtotal=" + subtotal + ", igv=" + igv + ", total=" + total + ", fechaPedido=" + fechaPedido + ", pedidoId=" + pedidoId + ", clienteId=" + clienteId + ", usuarioId=" + usuarioId + '}';
+    }
     
 }

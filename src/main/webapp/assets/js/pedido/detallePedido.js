@@ -1,3 +1,5 @@
+let informacionPedido = {};
+
 $(document).ready(function () {
     listarPedido();
 });
@@ -10,13 +12,14 @@ function listarPedido() {
             nroPedido: $("#txt_nroPedido").val()
         },
         success: function (data, textStatus, jqXHR) {
-            console.log(data);
             $("#lbl_nroPedido").append(data[0].nroPedido);
             $("#lbl_fechaPedido").append(data[0].fecha);
             $("#lbl_cliente").append(data[0].cliente);
             $("#lbl_estado").append(data[0].estado);
 
             listarDetallePedido();
+
+            llenarInfoPedido(data);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             toastr.error('No pudo realizar la petición listarPedido', 'Error interno');
@@ -32,7 +35,6 @@ function listarDetallePedido() {
             nroPedido: $("#txt_nroPedido").val()
         },
         success: function (data, textStatus, jqXHR) {
-            console.log("data -->>>" + data);
             let total = 0;
             if (data.length > 0) {
                 $.each(data, function () {
@@ -64,10 +66,32 @@ function listarDetallePedido() {
                 </tr>
                 `);
             }
-
+            llenarInfoDetallePedido(data, total);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             toastr.error('No pudo realizar la petición listarDetallePedido', 'Error interno');
         }
     });
+}
+
+function llenarInfoPedido(data) {
+    informacionPedido.nroPedido = data[0].nroPedido;
+    informacionPedido.fecha = data[0].fecha;
+    informacionPedido.cliente = data[0].cliente;
+    informacionPedido.estado = data[0].estado;
+    informacionPedido.clienteId = data[0].clienteId;
+    informacionPedido.username = $("#txt_username").val();
+    informacionPedido.usernameId = $("#txt_usernameId").val();
+}
+
+function llenarInfoDetallePedido(data, total) {
+    informacionPedido.subtotal = total;
+    informacionPedido.igv = informacionPedido.subtotal * 0.18;
+    informacionPedido.total = informacionPedido.subtotal + informacionPedido.igv;
+    informacionPedido.detalle = data;
+}
+
+function realizarVenta() {
+    localStorage.setItem("informacionPedido", JSON.stringify(informacionPedido));
+    location.href = "../venta/venta.jsp";
 }
