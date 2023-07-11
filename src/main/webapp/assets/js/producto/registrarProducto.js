@@ -1,15 +1,13 @@
 $(document).ready(function () {
 
     $("#btn_registrar").on('click', function (e) {
-        registrarProducto(e);
+        registrarProducto();
     });
 
 });
 
-async function registrarProducto(e) {
-    e.preventDefault();
+async function registrarProducto() {
     let frm = new FormData(document.getElementById("frm_registrarProducto"));
-    console.log(frm);
     $.ajax({
         type: 'POST',
         url: "../../ProductoController?accion=registrar",
@@ -21,7 +19,6 @@ async function registrarProducto(e) {
             $.LoadingOverlay("show");
         },
         success: function (data, textStatus, jqXHR) {
-            console.log(data);
             if (data == "1") {
                 toastr.success('Producto registrado correctamente', 'Mensaje exitoso');
                 location.href = 'consultarProducto.jsp';

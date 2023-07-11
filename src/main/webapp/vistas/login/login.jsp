@@ -16,7 +16,7 @@ response.setDateHeader("Expires",-1);
         <!-- Login Form -->
         <form method="POST" action="/norkys-app-utp/LoginController">
             <input type="text" placeholder="Usuario" name="usuario" class="form-control form-control-lg" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
-            <input type="text" placeholder="Contraseña" name="password" class="form-control form-control-lg" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+            <input type="password" placeholder="Contraseña" name="password" class="form-control form-control-lg" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
             <button type="submit" class="btn btn-success btn-lg">
                 Ingresar
             </button>

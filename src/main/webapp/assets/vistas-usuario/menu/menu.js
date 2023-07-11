@@ -208,14 +208,16 @@ function listarCategorias() {
             $.LoadingOverlay("show");
         },
         success: function (data, textStatus, jqXHR) {
-            categorias = data;
-            $.each(data, function () {
-                $("#btn_categorias").append(`
-                    <button type="button" id="btn_cat_${this.id}" class="btn btn-outline-success" onclick="botones_dinamicos(${this.id})">${this.nombre}</button>
-                `);
-            });
-            $("#btn_cat_" + data[0].id).addClass("active");
-            listarProductos(data[0].id);
+            if (data.length > 0) {
+                categorias = data;
+                $.each(data, function () {
+                    $("#btn_categorias").append(`
+                        <button type="button" id="btn_cat_${this.id}" class="btn btn-outline-success" onclick="botones_dinamicos(${this.id})">${this.nombre}</button>
+                    `);
+                });
+                $("#btn_cat_" + data[0].id).addClass("active");
+                listarProductos(data[0].id);
+            }
         },
         error: function (jqXHR, textStatus, errorThrown) {
             toastr.error('No pudo realizar la petición listarProductos', 'Error interno');

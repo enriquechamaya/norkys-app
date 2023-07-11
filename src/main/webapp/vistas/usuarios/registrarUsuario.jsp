@@ -27,10 +27,10 @@
             <br/>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <input type="text" id="in-password" class="form-control form-control-lg" placeholder="Contraseña">
+                    <input type="password" id="in-password" class="form-control form-control-lg" placeholder="Contraseña">
                 </div>
                 <div class="form-group col-md-6">
-                    <input type="text" id="in-repeat-password" class="form-control form-control-lg" placeholder="Repetir contraseña">
+                    <input type="password" id="in-repeat-password" class="form-control form-control-lg" placeholder="Repetir contraseña">
                 </div>
             </div>
             <br/>

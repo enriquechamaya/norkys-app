@@ -33,7 +33,7 @@ function listarProductos() {
                     <tr>
                         <th scope="row">${this.id}</th>
                         <td>${this.nombre}</td>
-                        <td>${this.precioUnitario}</td>
+                        <td>${this.precioUnitario.toFixed(2)}</td>
                         <td>${this.stock}</td>
                         <td>${this.estado}</td>
                         <td>
