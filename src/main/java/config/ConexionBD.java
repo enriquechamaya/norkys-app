@@ -18,12 +18,12 @@ public class ConexionBD {
 
     Logger logger = Logger.getLogger(this.getClass().getName());
 
-    private static final String URL = "jdbc:mysql://db4free.net:3306/bd_pedidos?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false";
-    private static final String USER = "integrador2";
-    private static final String PASSWORD = "integrador2";
-//    private static final String URL = "jdbc:mysql://10.100.50.118:3306/bd_pedidos?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false";
-//    private static final String USER = "root";
-//    private static final String PASSWORD = "MAYamq36299";    
+//    private static final String URL = "jdbc:mysql://db4free.net:3306/bd_pedidos?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false";
+//    private static final String USER = "integrador2";
+//    private static final String PASSWORD = "integrador2";
+    private static final String URL = "jdbc:mysql://10.100.50.118:3306/bd_pedidos?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false";
+    private static final String USER = "root";
+    private static final String PASSWORD = "MAYamq36299";    
 
     public Connection connect() {
         Connection connection = null;
